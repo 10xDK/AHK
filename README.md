@@ -2,9 +2,9 @@
 
 An **[AutoHotKey](https://www.autohotkey.com/docs/misc/Remap.htm)** script that optimizing keymap for **programming** 
 
-The current solution is to redefine the functionality of **Capslock** and **Right ALT** to make them funciton like the modifier keys(ctrl, shift).
+The script remaps **Capslock** and **Right ALT** to make them funciton like the modifier keys(ctrl, shift).
 
-#USAGE
+## USAGE
 
 ![usage](pic/usage.png)
 
