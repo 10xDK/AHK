@@ -107,9 +107,9 @@ CapsLock & f::Send {)}
 CapsLock & c::Send {{}
 CapsLock & v::Send {}}
 CapsLock & s::SendMode("{\}", "{n}") 
-CapsLock & 4::Send ({$}) 
-CapsLock & 5::Send ({%}) 
-CapsLock & 6::Send ({^}) 
+CapsLock & 4::Send {$}
+CapsLock & 5::Send {`%}
+CapsLock & 6::Send {^} 
 CapsLock & \::Send {delete}
 
 
