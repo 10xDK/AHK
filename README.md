@@ -5,6 +5,7 @@ An **[AutoHotKey](https://www.autohotkey.com/docs/misc/Remap.htm)** script optim
 The current solution is to redefine the functionality of **Capslock** and **Right ALT** to make them funciton like the modifier keys(ctrl, shift).
 
 ##USAGE
+
 ![usage](pic\usage.png)
 
 CapsLock + keys: send **operators** and **numbers** (pink and blue ones)
