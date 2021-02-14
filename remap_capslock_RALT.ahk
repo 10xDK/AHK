@@ -32,19 +32,6 @@ Hotkey, *\, Off
     Hotkey, *\, on
 return
 
-*i::send {blind}{up}
-*j::send {blind}{left}
-*k::send {blind}{down}
-*l::send {blind}{right}
-*o::send {blind}{end}
-*u::send {blind}{home}
-*e::send {blind}{F13}
-*9::send {blind}{F14}
-*c::send {blind}{F15}
-*.::send {blind}{F16}
-*,::send {blind}{F17}
-*\::send {blind}{delete}
-
 *RAlt up::
     Hotkey, *i, off
     Hotkey, *j, off
@@ -59,6 +46,19 @@ return
     Hotkey, *`,, Off
     Hotkey, *\, Off
 return
+
+*i::send {blind}{up}
+*j::send {blind}{left}
+*k::send {blind}{down}
+*l::send {blind}{right}
+*o::send {blind}{end}
+*u::send {blind}{home}
+*e::send {blind}{F13}
+*9::send {blind}{F14}
+*c::send {blind}{F15}
+*.::send {blind}{F16}
+*,::send {blind}{F17}
+*\::send {blind}{delete}
 
 ; double press CapsLock to turn on, single press to turn off.
 ~CapsLock:: 
