@@ -6,7 +6,7 @@ The current solution is to redefine the functionality of **Capslock** and **Righ
 
 ##USAGE
 
-![usage](pic\usage.png?raw=true "Title")
+![usage](pic/usage.png)
 
 CapsLock + keys: send **operators** and **numbers** (pink and blue ones)
 CapsLock + LALT + keys: send **assignment operators** (purple ones) 
