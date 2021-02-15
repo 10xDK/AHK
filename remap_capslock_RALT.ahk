@@ -11,14 +11,17 @@ Hotkey, *l, Off
 Hotkey, *o, Off
 Hotkey, *u, Off
 Hotkey, *e, Off
-Hotkey, *d, Off
-Hotkey, *c, Off
 Hotkey, *., Off
 Hotkey, *`,, Off
-Hotkey, *m, Off
-Hotkey, *n, Off
 Hotkey, *w, Off
 Hotkey, *q, Off
+Hotkey, *c, Off
+Hotkey, *x, Off
+Hotkey, *v, Off
+Hotkey, *r, Off
+Hotkey, *z, Off
+Hotkey, *y, Off
+Hotkey, *a, Off
 
 *RAlt::
     Hotkey, *i, on
@@ -28,14 +31,17 @@ Hotkey, *q, Off
     Hotkey, *o, on
     Hotkey, *u, on
     Hotkey, *e, on
-    Hotkey, *d, on
-    Hotkey, *c, on
     Hotkey, *., on
     Hotkey, *`,, on
-    Hotkey, *m, on
-    Hotkey, *n, on
     Hotkey, *w, on
     Hotkey, *q, on
+    Hotkey, *c, on
+    Hotkey, *x, on
+    Hotkey, *v, on
+    Hotkey, *r, on
+    Hotkey, *z, on
+    Hotkey, *y, on
+    Hotkey, *a, on
 return
 
 *RAlt up::
@@ -46,14 +52,17 @@ return
     Hotkey, *o, Off
     Hotkey, *u, Off
     Hotkey, *e, Off
-    Hotkey, *d, Off
-    Hotkey, *c, Off
     Hotkey, *., Off
     Hotkey, *`,, Off
-    Hotkey, *m, Off
-    Hotkey, *n, Off
     Hotkey, *w, Off
     Hotkey, *q, Off
+    Hotkey, *c, Off
+    Hotkey, *x, Off
+    Hotkey, *v, Off
+    Hotkey, *r, Off
+    Hotkey, *z, Off
+    Hotkey, *y, Off
+    Hotkey, *a, Off
 return
 
 *i::send {blind}{up}
@@ -62,17 +71,24 @@ return
 *l::send {blind}{right}
 *o::send {blind}{end}
 *u::send {blind}{home}
-*e::send {blind}{F13}
-*d::send {blind}{F14}
-*c::send {blind}{F15}
-*.::send {blind}{F16}
-*,::send {blind}{F17}
-*m::send {blind}{delete}
-*n::send {blind}{Backspace}
-*w::send {blind}{F18}
-*q::send {blind}{F19}
+*e::send {blind}{F13}   ;select inside tag !need extension "Quick and Simple Text Selection" publisher:"David Bankier" 
+*.::send {blind}{F14}   ;jump to next member !need extension support 
+*,::send {blind}{F15}   ;jump to previous member
+*q::send {blind}{F16}   ;select quote(including brackets) !need extension support "bracket select" by chunsen wang
+*w::send {LCtrl Down}{d}{LCtrl Up}   ;(Word) select word
+*c::send {LCtrl Down}{c}{LCtrl Up}   ;(Copy)copy word !need extension "copy word in cursor" publisher:"Alessandro Fragnani"
+*x::send {LCtrl Down}{x}{LCtrl Up}   ;(X) cut word/selection !need above extension
+*v::send {LCtrl Down}{v}{LCtrl Up}       ;(V) Replace
+*r::send {LCtrl Down}{d}{v}{LCtrl Up}   ;(Replace) replace Word
+*z::send {LCtrl Down}{z}{LCtrl Up}   ;undo
+*y::send {LCtrl Down}{y}{LCtrl Up}   ;redo
+*a::send {home}{LShift Down}{end}{LShift Up}   ;select line
 
-; double press CapsLock to turn on, single press to turn off.
+; key 9 and key 0 always behave like backspace and delete key
+*9::Send {Blind}{BackSpace}
+*0::Send {Blind}{Delete}
+
+; double press CapsLock to turn on, single press to turn off....
 ~CapsLock:: 
     if (A_PriorHotkey != "~CapsLock" or A_TimeSincePriorHotkey > 200)
     {
@@ -84,8 +100,6 @@ return
     SetCapsLockState, On ;double-pressed
 return
 
-; CapsLock & 1::SendMode("{1}", "double")
-; CapsLock & s::SendMode("{s}", "assignment")
 CapsLock & @::SendMode("ummmmm@gmail.com", "string")
 
 CapsLock & u::Send {1}
@@ -98,12 +112,12 @@ CapsLock & m::Send {7}
 CapsLock & ,::Send {8}
 CapsLock & .::Send {9}
 CapsLock & y::Send {0}
-; CapsLock & RAlt::Send {0}
 CapsLock & x::Send {x}
 CapsLock & n::Send {.}
+CapsLock & h::Send {,}
 CapsLock & t::SendMode("{-}{>}", "arrow")
-CapsLock & h::SendMode("{&}", "assignment")
-CapsLock & g::SendMode("{|}", "assignment")
+CapsLock & g::SendMode("{&}", "assignment")
+CapsLock & b::SendMode("{|}", "assignment")
 CapsLock & p::SendMode("{+}", "assignment")
 CapsLock & -::SendMode("{-}", "assignment")
 CapsLock & 8::SendMode("{*}", "assignment")
@@ -112,19 +126,15 @@ CapsLock & `;::SendMode("{:}", "assignment")
 CapsLock & '::Send {"}
 CapsLock & e::Send {<}
 CapsLock & r::Send {>}
-; CapsLock & 9::Send {(}
-; CapsLock & 0::Send {)}
 CapsLock & d::Send {(}
 CapsLock & f::Send {)}
 CapsLock & c::Send {{}
 CapsLock & v::Send {}}
-CapsLock & s::SendMode("{\}", "{n}") 
 CapsLock & 4::Send {$}
 CapsLock & 5::Send {`%}
 CapsLock & 6::Send {^} 
-CapsLock & b::Send {_}
-CapsLock & \::Send {delete}
-
+CapsLock & s::Send {_}
+CapsLock & \::SendMode("{\}", "{n}") 
 
 ;disable keys: 
 ;   
@@ -140,7 +150,6 @@ SendMode(key, mode) {
 
     if LAlt {
         switch mode {
-            ; case "double":      Send, %key%%key%
             case "assignment":  Send, %key%=
             case "arrow":       Send, =>
             case "string":      Send, %key%
@@ -151,34 +160,3 @@ SendMode(key, mode) {
         Send, %key%
     }
 }
-
-; CapsLock::
-;     KeyWait, CapsLock                                                   ; Wait forever until Capslock is released.
-;     KeyWait, CapsLock, D T0.2                                           ; ErrorLevel = 1 if CapsLock not down within 0.2 seconds.
-;     if ((ErrorLevel = 0) && (A_PriorKey = "CapsLock") )                 ; Is a double tap on CapsLock?
-;         {
-;             ; SetCapsLockState, % GetKeyState("CapsLock","T") ? "Off" : "On"  ; Toggle the state of CapsLock LED
-;             ; CLState := GetKeyState("CapsLock","T")
-;             ; MsgBox CLState is %CLState%
-;             if (GetKeyState("CapsLock","T") == False)
-;             {
-;                 SetCapsLockState, on
-;                 CLState := 0
-;                 ; MsgBox CLState is %CLState%
-;             }
-;             else if (GetKeyState("CapsLock","T") == True)
-;             {
-;                 SetCapsLockState, off
-;                 CLState := 1
-;                 ; MsgBox CLState is %CLState%
-;             }
-;         }
-; return
-
-; *CapsLock up::
-;     if (CLState != 1)
-;     {
-;         SetCapsLockState, Off
-;         CLState := 0
-;     }
-; return
