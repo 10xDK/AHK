@@ -11,11 +11,14 @@ Hotkey, *l, Off
 Hotkey, *o, Off
 Hotkey, *u, Off
 Hotkey, *e, Off
-Hotkey, *9, Off
+Hotkey, *d, Off
 Hotkey, *c, Off
 Hotkey, *., Off
 Hotkey, *`,, Off
-Hotkey, *\, Off
+Hotkey, *m, Off
+Hotkey, *n, Off
+Hotkey, *w, Off
+Hotkey, *q, Off
 
 *RAlt::
     Hotkey, *i, on
@@ -25,11 +28,14 @@ Hotkey, *\, Off
     Hotkey, *o, on
     Hotkey, *u, on
     Hotkey, *e, on
-    Hotkey, *9, on
+    Hotkey, *d, on
     Hotkey, *c, on
     Hotkey, *., on
     Hotkey, *`,, on
-    Hotkey, *\, on
+    Hotkey, *m, on
+    Hotkey, *n, on
+    Hotkey, *w, on
+    Hotkey, *q, on
 return
 
 *RAlt up::
@@ -40,11 +46,14 @@ return
     Hotkey, *o, Off
     Hotkey, *u, Off
     Hotkey, *e, Off
-    Hotkey, *9, Off
+    Hotkey, *d, Off
     Hotkey, *c, Off
     Hotkey, *., Off
     Hotkey, *`,, Off
-    Hotkey, *\, Off
+    Hotkey, *m, Off
+    Hotkey, *n, Off
+    Hotkey, *w, Off
+    Hotkey, *q, Off
 return
 
 *i::send {blind}{up}
@@ -54,11 +63,14 @@ return
 *o::send {blind}{end}
 *u::send {blind}{home}
 *e::send {blind}{F13}
-*9::send {blind}{F14}
+*d::send {blind}{F14}
 *c::send {blind}{F15}
 *.::send {blind}{F16}
 *,::send {blind}{F17}
-*\::send {blind}{delete}
+*m::send {blind}{delete}
+*n::send {blind}{Backspace}
+*w::send {blind}{F18}
+*q::send {blind}{F19}
 
 ; double press CapsLock to turn on, single press to turn off.
 ~CapsLock:: 
@@ -110,6 +122,7 @@ CapsLock & s::SendMode("{\}", "{n}")
 CapsLock & 4::Send {$}
 CapsLock & 5::Send {`%}
 CapsLock & 6::Send {^} 
+CapsLock & b::Send {_}
 CapsLock & \::Send {delete}
 
 
