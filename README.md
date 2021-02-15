@@ -1,6 +1,6 @@
 # remap_capslock_ralt
 
-An **[AutoHotKey](https://www.autohotkey.com/docs/misc/Remap.htm)** script that optimizing keymap for **programming** 
+An **[AutoHotKey](https://www.autohotkey.com/docs/misc/Remap.htm)** script that optimises keymap for **programming** 
 
 The script remaps **Capslock** and **Right ALT** to make them funciton like the modifier keys(ctrl, shift).
 
@@ -8,7 +8,7 @@ The script remaps **Capslock** and **Right ALT** to make them funciton like the 
 
 ![usage](pic/usage.png)
 
-CapsLock + keys: send **operators** and **numbers** (pink and blue ones) 
+CapsLock + keys: send **operators** and **numbers** (pink and blue ones)  
 CapsLock + LALT + keys: send **assignment operators** (purple ones) 
 
 RALT + keys: send **arrow keys** and **custom commands** (red)
