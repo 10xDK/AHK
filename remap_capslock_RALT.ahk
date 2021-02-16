@@ -21,6 +21,7 @@ Hotkey, *v, Off
 Hotkey, *r, Off
 Hotkey, *z, Off
 Hotkey, *y, Off
+Hotkey, *s, Off
 Hotkey, *a, Off
 
 *RAlt::
@@ -41,6 +42,7 @@ Hotkey, *a, Off
     Hotkey, *r, on
     Hotkey, *z, on
     Hotkey, *y, on
+    Hotkey, *s, on
     Hotkey, *a, on
 return
 
@@ -62,6 +64,7 @@ return
     Hotkey, *r, Off
     Hotkey, *z, Off
     Hotkey, *y, Off
+    Hotkey, *s, Off
     Hotkey, *a, Off
 return
 
@@ -74,15 +77,16 @@ return
 *e::send {blind}{F13}   ;select inside tag !need extension "Quick and Simple Text Selection" publisher:"David Bankier" 
 *.::send {blind}{F14}   ;jump to next member !need extension support 
 *,::send {blind}{F15}   ;jump to previous member
-*q::send {blind}{F16}   ;select quote(including brackets) !need extension support "bracket select" by chunsen wang
+*q::send {blind}{F16}   ;select inside quote(including brackets) !need extension support "bracket select" by chunsen wang
 *w::send {LCtrl Down}{d}{LCtrl Up}   ;(Word) select word
 *c::send {LCtrl Down}{c}{LCtrl Up}   ;(Copy)copy word !need extension "copy word in cursor" publisher:"Alessandro Fragnani"
 *x::send {LCtrl Down}{x}{LCtrl Up}   ;(X) cut word/selection !need above extension
 *v::send {LCtrl Down}{v}{LCtrl Up}       ;(V) Replace
 *r::send {LCtrl Down}{d}{v}{LCtrl Up}   ;(Replace) replace Word
-*z::send {LCtrl Down}{z}{LCtrl Up}   ;undo
-*y::send {LCtrl Down}{y}{LCtrl Up}   ;redo
-*a::send {home}{LShift Down}{end}{LShift Up}   ;select line
+*z::send {LCtrl Down}{z}{LCtrl Up}   ;(Z) undo
+*y::send {LCtrl Down}{y}{LCtrl Up}   ;(Y) redo
+*s::send {home}{LShift Down}{end}{LShift Up}   ;(Sentence) select the sentence (all text in the line)
+*a::send {LCtrl Down}{l}{LCtrl Up}   ;(Line) select line
 
 ; key 9 and key 0 always behave like backspace and delete key
 *9::Send {Blind}{BackSpace}
