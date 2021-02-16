@@ -23,6 +23,7 @@ Hotkey, *z, Off
 Hotkey, *y, Off
 Hotkey, *s, Off
 Hotkey, *a, Off
+Hotkey, *d, Off
 
 *RAlt::
     Hotkey, *i, on
@@ -44,6 +45,7 @@ Hotkey, *a, Off
     Hotkey, *y, on
     Hotkey, *s, on
     Hotkey, *a, on
+    Hotkey, *d, on
 return
 
 *RAlt up::
@@ -66,6 +68,7 @@ return
     Hotkey, *y, Off
     Hotkey, *s, Off
     Hotkey, *a, Off
+    Hotkey, *d, Off
 return
 
 *i::send {blind}{up}
@@ -87,10 +90,9 @@ return
 *y::send {LCtrl Down}{y}{LCtrl Up}   ;(Y) redo
 *s::send {home}{LShift Down}{end}{LShift Up}   ;(Sentence) select the sentence (all text in the line)
 *a::send {LCtrl Down}{l}{LCtrl Up}   ;(Line) select line
+*d::send {LCtrl Down}{d}{LCtrl Up}{Delete}   ;(Delete) select word
 
-; key 9 and key 0 always behave like backspace and delete key
-*9::Send {Blind}{BackSpace}
-*0::Send {Blind}{Delete}
+*\::Send {Delete}
 
 ; double press CapsLock to turn on, single press to turn off....
 ~CapsLock:: 
@@ -138,7 +140,8 @@ CapsLock & 4::Send {$}
 CapsLock & 5::Send {`%}
 CapsLock & 6::Send {^} 
 CapsLock & s::Send {_}
-CapsLock & \::SendMode("{\}", "{n}") 
+; CapsLock & \::SendMode("{\}", "{n}") 
+CapsLock & w::Send {\}  
 
 ;disable keys: 
 ;   
