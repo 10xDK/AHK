@@ -84,21 +84,23 @@ return
 *w::send {LCtrl Down}{d}{LCtrl Up}   ;(Word) select word
 *c::send {LCtrl Down}{c}{LCtrl Up}   ;(Copy)copy word !need extension "copy word in cursor" publisher:"Alessandro Fragnani"
 *x::send {LCtrl Down}{x}{LCtrl Up}   ;(X) cut word/selection !need above extension
-*v::send {LCtrl Down}{v}{LCtrl Up}       ;(V) Replace
+*v::send {LCtrl Down}{v}{LCtrl Up}   ;(V) Replace
 *r::send {LCtrl Down}{d}{v}{LCtrl Up}   ;(Replace) replace Word
 *z::send {LCtrl Down}{z}{LCtrl Up}   ;(Z) undo
 *y::send {LCtrl Down}{y}{LCtrl Up}   ;(Y) redo
-*s::send {home}{LShift Down}{end}{LShift Up}   ;(Sentence) select the sentence (all text in the line)
+*s::send {home}{LShift Down}{end}{LShift Up}   ;(Sentence) select the sentence (all text in the line excluding the indent)
 *a::send {LCtrl Down}{l}{LCtrl Up}   ;(Line) select line
-*d::send {LCtrl Down}{d}{LCtrl Up}{Delete}   ;(Delete) select word
+*d::send {LCtrl Down}{d}{LCtrl Up}{BackSpace}   ;(Delete) selected word
 
-*\::Send {Delete}
+;;standalone hotkeys
+*\::Send {Right}{BackSpace}  ;(Delete) don't send {delete} to avoid triggering ctrl+alt+delete system-wide command on windows
+^\::Send {LCtrl Down}{Right}{BackSpace}{LCtrl Up}   ;(Delete) the word to the right 
 
-; double press CapsLock to turn on, single press to turn off....
+; double press CapsLock to turn on, single press to turn off.. 
 ~CapsLock:: 
     if (A_PriorHotkey != "~CapsLock" or A_TimeSincePriorHotkey > 200)
     {
-        ; Too much time between presses, so this isn't a double-press.
+        ; Too much time between presses, so this isn't a double-press.123(<>_
         KeyWait, CapsLock
         SetCapsLockState, off
         return
