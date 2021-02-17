@@ -1,6 +1,6 @@
 # remap_capslock_ralt
 
-An **[AutoHotKey](https://www.autohotkey.com/docs/misc/Remap.htm)** script that optimises keymap for **programming** 
+An **[AutoHotKey](https://www.autohotkey.com/docs/misc/Remap.htm)** script that optimizes keymap for **programming** usage
 
 The script remaps **Capslock** and **Right ALT** to make them funciton like the modifier keys(ctrl, shift).
 
