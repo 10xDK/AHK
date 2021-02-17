@@ -11,8 +11,12 @@ Hotkey, *l, Off
 Hotkey, *o, Off
 Hotkey, *u, Off
 Hotkey, *e, Off
+Hotkey, *[, Off
+Hotkey, *', Off
+Hotkey, *``, Off
 Hotkey, *., Off
 Hotkey, *`,, Off
+Hotkey, *m, Off
 Hotkey, *w, Off
 Hotkey, *q, Off
 Hotkey, *c, Off
@@ -24,6 +28,10 @@ Hotkey, *y, Off
 Hotkey, *s, Off
 Hotkey, *a, Off
 Hotkey, *d, Off
+Hotkey, *`;, Off
+Hotkey, *g, Off
+Hotkey, *t, Off
+Hotkey, *b, Off
 
 *RAlt::
     Hotkey, *i, on
@@ -33,8 +41,12 @@ Hotkey, *d, Off
     Hotkey, *o, on
     Hotkey, *u, on
     Hotkey, *e, on
+    Hotkey, *[, on
+    Hotkey, *', on
+    Hotkey, *``, on
     Hotkey, *., on
     Hotkey, *`,, on
+    Hotkey, *m, on
     Hotkey, *w, on
     Hotkey, *q, on
     Hotkey, *c, on
@@ -46,6 +58,10 @@ Hotkey, *d, Off
     Hotkey, *s, on
     Hotkey, *a, on
     Hotkey, *d, on
+    Hotkey, *`;, on
+    Hotkey, *g, on
+    Hotkey, *t, on
+    Hotkey, *b, on
 return
 
 *RAlt up::
@@ -56,8 +72,12 @@ return
     Hotkey, *o, Off
     Hotkey, *u, Off
     Hotkey, *e, Off
+    Hotkey, *[, Off
+    Hotkey, *', Off
+    Hotkey, *``, Off
     Hotkey, *., Off
     Hotkey, *`,, Off
+    Hotkey, *m, Off
     Hotkey, *w, Off
     Hotkey, *q, Off
     Hotkey, *c, Off
@@ -69,6 +89,10 @@ return
     Hotkey, *s, Off
     Hotkey, *a, Off
     Hotkey, *d, Off
+    Hotkey, *`;, Off
+    Hotkey, *g, Off
+    Hotkey, *t, Off
+    Hotkey, *b, Off
 return
 
 *i::send {blind}{up}
@@ -77,22 +101,44 @@ return
 *l::send {blind}{right}
 *o::send {blind}{end}
 *u::send {blind}{home}
-*e::send {blind}{F13}   ;select inside tag !need extension "Quick and Simple Text Selection" publisher:"David Bankier" 
-*.::send {blind}{F14}   ;jump to next member !need extension support 
-*,::send {blind}{F15}   ;jump to previous member
-*q::send {blind}{F16}   ;select inside quote(including brackets) !need extension support "bracket select" by chunsen wang
-*w::send {LCtrl Down}{d}{LCtrl Up}   ;(Word) select word
-*c::send {LCtrl Down}{c}{LCtrl Up}   ;(Copy)copy word !need extension "copy word in cursor" publisher:"Alessandro Fragnani"
+;
+;Required extensions for following custom commands:
+;"Quick and Simple Text Selection" publisher:"David Bankier" 
+;"Toggle Case" publisher:"Pranshu Agrawal"
+;"Go to Next/Previous Member" publisher:"Mishkin Faustini"
+;"bracket select" by chunsen wang
+;"Any Swap" by publisher:"wolray"
+;"copy word in cursor" publisher:"Alessandro Fragnani"
+;"Semicolon Insertion Shortcut" publisher:"Christian Valentin"
+;"Multiple clipboards for VSCode" publisher:"slevesque"
+;"Code Ace Jumper" publisher:"lucax88x"
+;"Multiple clipboards for VSCode" publisher:"slevesque"
+;
+*e::send {LCtrl Down}{k}{LCtrl Up}{LShift Down}{.}{LShift Up}   ;select inside tag ! "Quick and Simple Text Selection" 
+*[::send {blind}{LCtrl Down}{k}{LCtrl Up}{[}   ;select inside bracket ! "Quick and Simple Text Selection" 
+*'::send {LCtrl Down}{k}{LCtrl Up}{LShift Down}{;}{LShift Up}   ;switch quotes ! "Quick and Simple Text Selection" 
+*`::send {blind}{F13}   ;switch upper/lower case !"Toggle Case" 
+*.::send {blind}{F14}   ;swap argument right !"Any Swap"
+*,::send {blind}{F15}   ;swap argument left
+*q::send {blind}{F16}   ;select inside quote(including brackets) !"bracket select" by chunsen wang
+*m::send {blind}{F17}   ;jump to next/previous member !"Go to Next/Previous Member" 
+*w::send {LCtrl Down}{d}{LCtrl Up}   ;(Word) select word, press again to select next occurrence
+*c::send {LCtrl Down}{c}{LCtrl Up}   ;(Copy) copy word ! "copy word in cursor" 
 *x::send {LCtrl Down}{x}{LCtrl Up}   ;(X) cut word/selection !need above extension
-*v::send {LCtrl Down}{v}{LCtrl Up}   ;(V) Replace
+*v::send {LCtrl Down}{v}{LCtrl Up}   ;(V) Paste 
 *r::send {LCtrl Down}{d}{v}{LCtrl Up}   ;(Replace) replace Word
 *z::send {LCtrl Down}{z}{LCtrl Up}   ;(Z) undo
 *y::send {LCtrl Down}{y}{LCtrl Up}   ;(Y) redo
 *s::send {home}{LShift Down}{end}{LShift Up}   ;(Sentence) select the sentence (all text in the line excluding the indent)
 *a::send {LCtrl Down}{l}{LCtrl Up}   ;(Line) select line
-*d::send {LCtrl Down}{d}{LCtrl Up}{BackSpace}   ;(Delete) selected word
+*d::send {LCtrl Down}{d}{BackSpace}{LCtrl Up}   ;(Delete) word
+*;::send {blind}{LCtrl Down}{;}{LCtrl Up}   ;(add) ;/: at end of line !Semicolon Insertion Shortcut
+*g::send {LCtrl Down}{g}{LCtrl Up}   ;(Goto) go to word !ACE Jumper
+*t::send {LCtrl Down}{LShift Down}{g}{LShift Up}{LCtrl Up}   ;(Goto) go to line !ACE Jumper
+*b::send {blind}{F18}   ;(Board) clipboard buffer
 
-;;standalone hotkeys
+;<\b>asdf<\b> "hello"
+;;standalone hotkeys: \ key on the keyboard has the delete function, the charactar \ is remapped to capslock and w. 
 *\::Send {Right}{BackSpace}  ;(Delete) don't send {delete} to avoid triggering ctrl+alt+delete system-wide command on windows
 ^\::Send {LCtrl Down}{Right}{BackSpace}{LCtrl Up}   ;(Delete) the word to the right 
 
@@ -138,6 +184,7 @@ CapsLock & d::Send {(}
 CapsLock & f::Send {)}
 CapsLock & c::Send {{}
 CapsLock & v::Send {}}
+CapsLock & 1::Send {!}
 CapsLock & 4::Send {$}
 CapsLock & 5::Send {`%}
 CapsLock & 6::Send {^} 
@@ -150,7 +197,7 @@ CapsLock & w::Send {\}
 <+9::return ;disable left shift + 9 
 <++::return
 <+8::return
-<+[::return
+; <+[::return
 <+]::return
 
 
