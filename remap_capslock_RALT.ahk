@@ -117,30 +117,30 @@ return
 *e::send {LCtrl Down}{k}{LCtrl Up}{LShift Down}{.}{LShift Up}   ;select inside tag ! "Quick and Simple Text Selection" 
 *[::send {blind}{LCtrl Down}{k}{LCtrl Up}{[}   ;select inside bracket ! "Quick and Simple Text Selection" 
 *'::send {LCtrl Down}{k}{LCtrl Up}{LShift Down}{;}{LShift Up}   ;switch quotes ! "Quick and Simple Text Selection" 
-*`::send {blind}{F13}   ;switch upper/lower case !"Toggle Case" 
-*.::send {blind}{F14}   ;swap argument right !"Any Swap"
-*,::send {blind}{F15}   ;swap argument left
-*q::send {blind}{F16}   ;select inside quote(including brackets) !"bracket select" by chunsen wang
-*m::send {blind}{F17}   ;jump to next/previous member !"Go to Next/Previous Member" 
-*w::send {LCtrl Down}{d}{LCtrl Up}   ;(Word) select word, press again to select next occurrence
-*c::send {LCtrl Down}{c}{LCtrl Up}   ;(Copy) copy word ! "copy word in cursor" 
-*x::send {LCtrl Down}{x}{LCtrl Up}   ;(X) cut word/selection !need above extension
-*v::send {LCtrl Down}{v}{LCtrl Up}   ;(V) Paste 
-*r::send {LCtrl Down}{d}{v}{LCtrl Up}   ;(Replace) replace Word
-*z::send {LCtrl Down}{z}{LCtrl Up}   ;(Z) undo
-*y::send {LCtrl Down}{y}{LCtrl Up}   ;(Y) redo
-*s::send {home}{LShift Down}{end}{LShift Up}   ;(Sentence) select the sentence (all text in the line excluding the indent)
-*a::send {LCtrl Down}{l}{LCtrl Up}   ;(Line) select line
-*d::send {LCtrl Down}{d}{BackSpace}{LCtrl Up}   ;(Delete) word
-*;::send {blind}{LCtrl Down}{;}{LCtrl Up}   ;(add) ;/: at end of line !Semicolon Insertion Shortcut
+*`::send {blind}{F13}    ;switch upper/lower case !"Toggle Case" 
+*.::send {blind}{F14}    ;swap argument right !"Any Swap"
+*,::send {blind}{F15}    ;swap argument left
+*q::send {blind}{F16}    ;select inside quote(including brackets) !"bracket select" by chunsen wang
+*m::send {blind}{F17}    ;jump to next/previous member !"Go to Next/Previous Member" 
+*w::send {LCtrl Down}{d}{LCtrl Up}    ;(Word) select word, press again to select next occurrence
+*c::send {LCtrl Down}{c}{LCtrl Up}    ;(Copy) copy word ! "copy word in cursor" 
+*x::send {LCtrl Down}{x}{LCtrl Up}    ;(X) cut word/selection !need above extension
+*v::send {LCtrl Down}{v}{LCtrl Up}    ;(V) Paste 
+*r::send {LCtrl Down}{d}{v}{LCtrl Up}    ;(Replace) replace Word
+*z::send {LCtrl Down}{z}{LCtrl Up}    ;(Z) undo
+*y::send {LCtrl Down}{y}{LCtrl Up}    ;(Y) redo
+*s::send {home}{LShift Down}{end}{LShift Up}    ;(Sentence) select the sentence (all text in the line excluding the indent)
+*a::send {LCtrl Down}{l}{LCtrl Up}    ;(Line) select line
+*d::send {LCtrl Down}{d}{BackSpace}{LCtrl Up}    ;(Delete) word
+*;::send {blind}{LCtrl Down}{;}{LCtrl Up}    ;(add) ;/: at end of line !Semicolon Insertion Shortcut
 *g::send {LCtrl Down}{g}{LCtrl Up}   ;(Goto) go to word !ACE Jumper
 *t::send {LCtrl Down}{LShift Down}{g}{LShift Up}{LCtrl Up}   ;(Goto) go to line !ACE Jumper
 *b::send {blind}{F18}   ;(Board) clipboard buffer
 
 ;<\b>asdf<\b> "hello"
-;;standalone hotkeys: \ key on the keyboard has the delete function, the charactar \ is remapped to capslock and w. 
+;;standalone hotkeys: \ key on the keyboard has the delete function, the charactar \ is remapped to capslock and q. 
 *\::Send {Right}{BackSpace}  ;(Delete) don't send {delete} to avoid triggering ctrl+alt+delete system-wide command on windows
-^\::Send {LCtrl Down}{Right}{BackSpace}{LCtrl Up}   ;(Delete) the word to the right 
+^\::Send {LCtrl Down}{Right}{LCtrl Up}{BackSpace}   ;(Delete) the word to the right 
 
 ; double press CapsLock to turn on, single press to turn off.. 
 ~CapsLock:: 
@@ -177,20 +177,22 @@ CapsLock & -::SendMode("{-}", "assignment")
 CapsLock & 8::SendMode("{*}", "assignment")
 CapsLock & /::SendMode("{/}", "assignment")
 CapsLock & `;::SendMode("{:}", "assignment")
-CapsLock & '::Send {"}
-CapsLock & e::Send {<}
-CapsLock & r::Send {>}
+CapsLock & 3::Send {<}
+CapsLock & 4::Send {>}
+CapsLock & e::Send {[}
+CapsLock & r::Send {]}
 CapsLock & d::Send {(}
 CapsLock & f::Send {)}
 CapsLock & c::Send {{}
 CapsLock & v::Send {}}
+CapsLock & '::Send {"}
 CapsLock & 1::Send {!}
-CapsLock & 4::Send {$}
 CapsLock & 5::Send {`%}
 CapsLock & 6::Send {^} 
-CapsLock & s::Send {_}
 ; CapsLock & \::SendMode("{\}", "{n}") 
-CapsLock & w::Send {\}  
+CapsLock & s::Send {_}
+CapsLock & q::Send {\}  
+CapsLock & w::Send {$}  
 
 ;disable keys: 
 ;   
@@ -199,6 +201,7 @@ CapsLock & w::Send {\}
 <+8::return
 ; <+[::return
 <+]::return
+; *[::return
 
 
 SendMode(key, mode) {
