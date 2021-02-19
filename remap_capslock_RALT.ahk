@@ -10,7 +10,7 @@ Hotkey, *k, Off
 Hotkey, *l, Off
 Hotkey, *o, Off
 Hotkey, *u, Off
-Hotkey, *e, Off
+Hotkey, *3, Off
 Hotkey, *[, Off
 Hotkey, *', Off
 Hotkey, *``, Off
@@ -40,7 +40,7 @@ Hotkey, *b, Off
     Hotkey, *l, on
     Hotkey, *o, on
     Hotkey, *u, on
-    Hotkey, *e, on
+    Hotkey, *3, on
     Hotkey, *[, on
     Hotkey, *', on
     Hotkey, *``, on
@@ -71,7 +71,7 @@ return
     Hotkey, *l, off
     Hotkey, *o, Off
     Hotkey, *u, Off
-    Hotkey, *e, Off
+    Hotkey, *3, Off
     Hotkey, *[, Off
     Hotkey, *', Off
     Hotkey, *``, Off
@@ -114,7 +114,7 @@ return
 ;"Code Ace Jumper" publisher:"lucax88x"
 ;"Multiple clipboards for VSCode" publisher:"slevesque"
 ;
-*e::send {LCtrl Down}{k}{LCtrl Up}{LShift Down}{.}{LShift Up}   ;select inside tag ! "Quick and Simple Text Selection" 
+*3::send {LCtrl Down}{k}{LCtrl Up}{LShift Down}{.}{LShift Up}   ;select inside tag ! "Quick and Simple Text Selection" 
 *[::send {blind}{LCtrl Down}{k}{LCtrl Up}{[}   ;select inside bracket ! "Quick and Simple Text Selection" 
 *'::send {LCtrl Down}{k}{LCtrl Up}{LShift Down}{;}{LShift Up}   ;switch quotes ! "Quick and Simple Text Selection" 
 *`::send {blind}{F13}    ;switch upper/lower case !"Toggle Case" 
@@ -154,7 +154,7 @@ return
     SetCapsLockState, On ;double-pressed
 return
 
-CapsLock & @::SendMode("ummmmm@gmail.com", "string")
+; CapsLock & @::SendMode("ummmmm@gmail.com", "string")
 
 CapsLock & u::Send {1}
 CapsLock & i::Send {2}
@@ -193,6 +193,8 @@ CapsLock & 6::Send {^}
 CapsLock & s::Send {_}
 CapsLock & q::Send {\}  
 CapsLock & w::Send {$}  
+CapsLock & 2::Send {~}  
+CapsLock & x::Send {#}  
 
 ;disable keys: 
 ;   
