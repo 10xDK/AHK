@@ -2,7 +2,7 @@
 
 An **[AutoHotKey](https://www.autohotkey.com/docs/misc/Remap.htm)** script that optimizes keymap for **programming** usage.
 
-The script enables the **CapsLock** and **Right ALT** key functioning like the modifier keys(*e.g. ctrl, shift*).You'll be using ur most **flexible** fingers to type some of the most **used** keys(symbols/operators/arrow keys) in the most **convenient** location, whereas inb4 typing symbols and brackets relies on Right **Pinky** too much and often require **distant** hand movements(ahh...). Using tje script to 10x your privilege and joy while coding. 
+The script enables the **CapsLock** and **Right ALT** key functioning like the modifier keys(*e.g. ctrl, shift*).You'll be using ur most **flexible** fingers to type some of the most **used** keys(symbols/operators/arrow keys) in the most **convenient** location, whereas inb4 typing symbols and brackets relies on Right **Pinky** too much and often require **distant** hand movements(ahh...). Using the script to 10x your privilege and joy while coding. 
 
 >but if ur looking for 100x privilege and pride please use VIM instead =))
 
