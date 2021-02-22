@@ -1,4 +1,4 @@
-# remap_capslock_ralt
+# Keyboard-Mapping-Optimized-10x-Developer-Edition
 
 An **[AutoHotKey](https://www.autohotkey.com/docs/misc/Remap.htm)** script that optimizes keymap for **programming** usage. 
 
