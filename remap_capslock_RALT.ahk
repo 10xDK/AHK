@@ -1,3 +1,4 @@
+#NoEnv
 #SingleInstance, Force
 SendMode Input
 SetWorkingDir, %A_ScriptDir%
@@ -10,8 +11,8 @@ Hotkey, *k, Off
 Hotkey, *l, Off
 Hotkey, *o, Off
 Hotkey, *u, Off
-; Hotkey, *q, Off
-; Hotkey, *w, Off
+Hotkey, *e, Off
+Hotkey, *h, Off
 Hotkey, *[, Off
 Hotkey, *', Off
 Hotkey, *f, Off
@@ -33,6 +34,7 @@ Hotkey, *`;, Off
 Hotkey, *g, Off
 Hotkey, *t, Off
 Hotkey, *b, Off
+Hotkey, *p, Off
 
 *RAlt::
     Hotkey, *i, on
@@ -41,8 +43,8 @@ Hotkey, *b, Off
     Hotkey, *l, on
     Hotkey, *o, on
     Hotkey, *u, on
-    ; Hotkey, *q, on
-    ; Hotkey, *w, on
+    Hotkey, *e, on
+    Hotkey, *h, on
     Hotkey, *[, on
     Hotkey, *', on
     Hotkey, *f, on
@@ -64,6 +66,7 @@ Hotkey, *b, Off
     Hotkey, *g, on
     Hotkey, *t, on
     Hotkey, *b, on
+    Hotkey, *p, on
 return
 
 *RAlt up::
@@ -73,8 +76,8 @@ return
     Hotkey, *l, off
     Hotkey, *o, Off
     Hotkey, *u, Off
-    ; Hotkey, *q, Off
-    ; Hotkey, *w, Off
+    Hotkey, *e, Off
+    Hotkey, *h, Off
     Hotkey, *[, Off
     Hotkey, *', Off
     Hotkey, *f, Off
@@ -96,6 +99,7 @@ return
     Hotkey, *g, Off
     Hotkey, *t, Off
     Hotkey, *b, Off
+    Hotkey, *p, Off
 return
 
 ;RALT combos:   
@@ -118,12 +122,11 @@ return
 ;"Code Ace Jumper" publisher:"lucax88x"
 ;"Multiple clipboards for VSCode" publisher:"slevesque"
 ;
-; *q::send {LCtrl Down}{k}{LCtrl Up}{LShift Down}{,}{LShift Up}   ;select inside angled brackets ! "Quick and Simple Text Selection" 
-; *w::send {LCtrl Down}{k}{LCtrl Up}{LShift Down}{.}{LShift Up}   ;select inside tag ! "Quick and Simple Text Selection" 
-
+*e::send {LCtrl Down}{k}{LCtrl Up}{LShift Down}{,}{LShift Up}   ;select inside angled brackets ! "Quick and Simple Text Selection" 
+*h::send {LCtrl Down}{k}{LCtrl Up}{LShift Down}{.}{LShift Up}   ;select inside HTML tag ! "Quick and Simple Text Selection" 
 *[::send {blind}{LCtrl Down}{k}{LCtrl Up}{[}   ;select inside bracket ! "Quick and Simple Text Selection" 
 *'::send {LCtrl Down}{k}{LCtrl Up}{LShift Down}{;}{LShift Up}   ;switch quotes ! "Quick and Simple Text Selection" 
-*f::send {blind}{F13}    ;(Flip case) flip upper/lower case !"change-case" 
+*f::send {blind}{F13}    ;(Flip case) flip to upper/camal/firstUpper case !"change-case" 
 *.::send {blind}{F14}    ;swap argument right !"Any Swap"
 *,::send {blind}{F15}    ;swap argument left
 *q::send {blind}{F16}    ;(Quote) select inside quote(bracket-pair-colorizer-2.expandBracketSelection)
@@ -132,34 +135,80 @@ return
 *c::send {LCtrl Down}{c}{LCtrl Up}    ;(Copy) copy word ! "copy word in cursor" 
 *x::send {LCtrl Down}{x}{LCtrl Up}    ;(X) cut word/selection !need above extension
 *v::send {LCtrl Down}{v}{LCtrl Up}    ;(V) Paste 
-*r::send {LCtrl Down}{d}{v}{LCtrl Up}    ;(Replace) replace Word
+*r::send {LCtrl Down}{d}{v}{LCtrl Up}    ;(Replace) replace Word with the clipboard
 *z::send {LCtrl Down}{z}{LCtrl Up}    ;(Z) undo
 *y::send {LCtrl Down}{y}{LCtrl Up}    ;(Y) redo
 *t::send {home}{LShift Down}{end}{LShift Up}    ;(Text) select all Text in line (excluding the indent)
 *a::send {LCtrl Down}{l}{LCtrl Up}    ;(Line) select line
-*d::send {LCtrl Down}{d}{BackSpace}{LCtrl Up}    ;(Delete) word
+*d::send {LCtrl Down}{d}{BackSpace}{LCtrl Up}    ;(Delete) word 
 *;::send {blind}{LCtrl Down}{;}{LCtrl Up}    ;add ;/: at end of line !Semicolon Insertion Shortcut
 *g::send {Blind}{LCtrl Down}{g}{LCtrl Up}   ;(Goto) go to word, RALT+SHIFT+G go to line !ACE Jumper
 *b::send {blind}{F18}   ;(Board) clipboard buffer
+*p::send {blind}{F19}   ;(Page) page up or down 
 
-;<><>->_->=>___ZZZZZZZXXZXZbb```
-*]::Send {Delete}  ;(Delete) 
-^]::Send {LCtrl Down}{LShift Down}{Right}{LShift Up}{LCtrl Up}{BackSpace} ;don't send {delete} to avoid triggering the alt+ctrl+delete system-wide command on windows
+;;;standalone keys: "]" key send DELETE
+; *]::Send {Delete}  ;(Delete) 
+; ^]::Send {LCtrl Down}{LShift Down}{Right}{LShift Up}{LCtrl Up}{BackSpace} ;don't send {delete} to avoid triggering the alt+ctrl+delete system-wide command on windows
 ; ^]::Send {LCtrl Down}{Delete}{LCtrl Up}
 
-*`::Escape ;mapping backtick ` key to ESCAPE
+*`::Escape ;backtick "`" key to send ESCAPE
+;;;END of standalone keys
 
-; double press CapsLock to turn on, single press to turn off.. 
-~CapsLock:: 
-    if (A_PriorHotkey != "~CapsLock" or A_TimeSincePriorHotkey > 200)
+
+; CapsLock Mode 1: double press CapsLock to turn on, single press to turn off.. 
+; CapsLock:: 
+;     ; MsgBox, %A_PriorHotkey%
+;     if (A_PriorHotkey != "*Capslock Up" or A_TimeSincePriorHotkey > 200)
+;     {
+;         ; Too much time between presses, so this isn't a double-press
+;         KeyWait, CapsLock
+;         SetCapsLockState, off
+;         CLState := 0
+;         return
+;     }
+;     SetCapsLockState, On ;double-pressed
+;     CLState := 1
+; return
+
+; CapsLock Mode 2: double press CapsLock to turn it on/off.. 
+CapsLock:: 
+    ; MsgBox, %A_PriorHotkey%
+    if (A_PriorHotkey == "*Capslock Up" and A_TimeSincePriorHotkey < 300)
     {
-        ; Too much time between presses, so this isn't a double-press
         KeyWait, CapsLock
-        SetCapsLockState, off
-        return
+
+        if GetKeyState("CapsLock", "T") 
+        {
+            SetCapsLockState, off
+            CLState := 0
+        }
+        else
+        {
+            SetCapsLockState, on
+            CLState := 1
+        }
     }
-    SetCapsLockState, On ;double-pressed
+Return
+
+*Capslock Up:: ; Fire the hotkey even if extra modifiers are being held down. 
+    if CLState == 0
+        SetCapsLockState, off
 return
+
+SendMode(key, mode) {
+    LAlt := GetKeyState("LALT", "P")
+
+    if LAlt {
+        switch mode {
+            case "assignment":  Send, %key%=
+            case "string":      Send, %key%
+            Default:            Send, %mode% ; switch
+        }
+    }
+    else {
+        Send, %key%
+    }
+}
 
 CapsLock & j::Send {1}
 CapsLock & k::Send {2}
@@ -176,27 +225,28 @@ CapsLock & p::SendMode("{+}", "assignment") ;P for Plus
 CapsLock & -::SendMode("{-}", "assignment")
 CapsLock & m::SendMode("{*}", "assignment") ;M for Multiply
 CapsLock & /::SendMode("{/}", "assignment")
-CapsLock & h::SendMode("{&}", "assignment") ;no mnemonic :/
+CapsLock & h::SendMode("{&}", "assignment") ;no mnemonic :) just for easy accessibility 
 CapsLock & n::SendMode("{|}", "assignment")
 CapsLock & `;::SendMode("{:}", "assignment")
 CapsLock & '::Send {"}
-CapsLock & q::Send {<}
-CapsLock & w::Send {>}
-CapsLock & e::Send {[}
-CapsLock & r::Send {]}
+CapsLock & e::Send {<}
+CapsLock & r::Send {>}
+CapsLock & q::Send {[}
+CapsLock & w::Send {]}
 CapsLock & d::Send {(}
 CapsLock & f::Send {)}
 CapsLock & c::Send {{}
 CapsLock & v::Send {}}
-CapsLock & 1::Send {!}
+CapsLock & 1::SendMode("{!}", "assignment")
 CapsLock & 2::Send {@}  
 CapsLock & 3::Send {#}   
 CapsLock & 4::Send {$}  
 CapsLock & 5::Send {`%}
 CapsLock & 6::Send {^} 
-CapsLock & s::Send {_}  ;S for underScore 
+CapsLock & g::Send {_}  ;just for easy accessibility 
 CapsLock & t::Send {~}  ;T for Tilde
 CapsLock & b::Send {``}  ;B for Back tick
+CapsLock & y::Send {?}  ;Y for WHY or Whether(?)
 ; CapsLock & @::SendMode("ummmmm@gmail.com", "string")
 
 ;disable keys: 
@@ -207,19 +257,3 @@ CapsLock & b::Send {``}  ;B for Back tick
 ; <+[::return
 ; <+]::return 
 ; *[::return
-
-
-SendMode(key, mode) {
-    LAlt := GetKeyState("LALT", "P")
-
-    if LAlt {
-        switch mode {
-            case "assignment":  Send, %key%=
-            case "string":      Send, %key%
-            Default:            Send, %mode% ; switch
-        }
-    }
-    else {
-        Send, %key%
-    }
-}
