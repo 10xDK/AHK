@@ -141,16 +141,19 @@ return
 *t::send {home}{LShift Down}{end}{LShift Up}    ;(Text) select all Text in line (excluding the indent)
 *a::send {LCtrl Down}{l}{LCtrl Up}    ;(All) select all thing in a line including the indent
 *d::send {LCtrl Down}{d}{BackSpace}{LCtrl Up}    ;(Delete) word 
-*;::send {blind}{LCtrl Down}{;}{LCtrl Up}    ;add ;/: at end of line !Semicolon Insertion Shortcut
+*;::send {blind}{LCtrl Down}{LShift Down}{;}{LShift Up}{LCtrl Up}    ;add ;/: at end of line !Semicolon Insertion Shortcut
 *g::send {Blind}{LCtrl Down}{g}{LCtrl Up}   ;(Goto) go to word, RALT+SHIFT+G go to line !ACE Jumper
 *b::send {blind}{F18}   ;(Board) clipboard buffer
 *p::send {blind}{F19}   ;(Page) page up or down 
 
 ;;;standalone keys: "[" key send DELETE, Use it if the Delete key is distant on your keyboard.
-; *[::Send {Delete}  ;(Delete) 
-; ^[::Send {LCtrl Down}{LShift Down}{Right}{LShift Up}{LCtrl Up}{BackSpace} ;don't send {delete} to avoid triggering the alt+ctrl+delete system-wide command on windows
+*\::Send {Delete}  ;(Delete) 
+^\::Send {LShift Down}{end}{LShift Up}{BackSpace} ;don't send {delete} to avoid triggering the alt+ctrl+delete system-wide command on windows
++\::Send {LShift Down}{home}{LShift Up}{BackSpace} ;don't send {delete} to avoid triggering the alt+ctrl+delete system-wide command on windows
+; +\::Send {LCtrl Down}{LShift Down}{Right}{LShift Up}{LCtrl Up}{BackSpace} ;don't send {delete} to avoid triggering the alt+ctrl+delete system-wide command on windows
 ;; ^[::Send {LCtrl Down}{Delete}{LCtrl Up}
 
+; *]::Send {Blind}{\}
 *`::Escape ;backtick "`" key to send ESCAPE
 ;;;END of standalone keys
 
@@ -226,11 +229,14 @@ CapsLock & -::SendMode("{-}", "assignment")
 CapsLock & m::SendMode("{*}", "assignment") ;M for Multiply
 CapsLock & /::SendMode("{/}", "assignment")
 CapsLock & h::SendMode("{&}", "assignment") ;no mnemonic :) just for easy accessibility 
-CapsLock & n::SendMode("{|}", "assignment")
+CapsLock & g::SendMode("{|}", "assignment")
+CapsLock & 6::SendMode("{^}", "assignment")
 CapsLock & `;::SendMode("{:}", "assignment")
-CapsLock & '::Send {"}
-CapsLock & e::Send {<}
-CapsLock & r::Send {>}
+CapsLock & '::Send {'}
+CapsLock & s::Send {"}
+CapsLock & x::Send {\} 
+CapsLock & e::SendMode("{<}", "assignment")
+CapsLock & r::SendMode("{>}", "assignment")
 CapsLock & q::Send {[}
 CapsLock & w::Send {]}
 CapsLock & d::Send {(}
@@ -242,11 +248,20 @@ CapsLock & 2::Send {@}
 CapsLock & 3::Send {#}   
 CapsLock & 4::Send {$}  
 CapsLock & 5::Send {`%}
-CapsLock & 6::Send {^} 
-CapsLock & g::Send {_}  ;just for easy accessibility 
+CapsLock & n::Send {_}  ;just for easy accessibility 
 CapsLock & t::Send {~}  ;T for Tilde
 CapsLock & b::Send {``}  ;B for Back tick
 CapsLock & y::Send {?}  ;Y for WHY or Whether(?)
+CapsLock & z::Send {z}  ;placeholder!
+CapsLock & =::Send {=}  ;
+CapsLock & [::Send {[}  ;
+CapsLock & ]::Send {]}  ;
+CapsLock & ,::Send {,}  ;
+CapsLock & .::Send {.}  ;
+CapsLock & \::Send {Delete}  ;
+CapsLock & Backspace::Send {Backspace}  ;
+CapsLock & Enter::Send {Enter}  ;
+CapsLock & Space::Send {Space}  ;
 ; CapsLock & @::SendMode("ummmmm@gmail.com", "string")
 
 ;disable keys: 
