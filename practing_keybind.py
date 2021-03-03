@@ -2,7 +2,7 @@
 
 import random
 
-strSym = "+= -= *= /= &= |= != + - * / & | { <> () [] {} : := -> => ! @ # $ %"
+strSym = "+= -= *= /= &= |= != + - * / & | <> () [] {} : := -> => ! @ # $ %"
 
 def shuffle_string(str):
     list = str.split()

@@ -223,7 +223,7 @@ CapsLock & 7::Send {7}
 CapsLock & 8::Send {8}
 CapsLock & 9::Send {9}
 CapsLock & 0::Send {0}
-CapsLock & a::SendMode("{-}{>}", "{=}{>}")  ;A for Arrow
+CapsLock & t::SendMode("{-}{>}", "{=}{>}")  ;A for Arrow
 CapsLock & p::SendMode("{+}", "assignment") ;P for Plus
 CapsLock & -::SendMode("{-}", "assignment")
 CapsLock & m::SendMode("{*}", "assignment") ;M for Multiply
@@ -234,7 +234,7 @@ CapsLock & 6::SendMode("{^}", "assignment")
 CapsLock & `;::SendMode("{:}", "assignment")
 CapsLock & '::Send {'}
 CapsLock & s::Send {"}
-CapsLock & x::Send {\} 
+CapsLock & b::Send {\} ;B for Backslash
 CapsLock & e::SendMode("{<}", "assignment")
 CapsLock & r::SendMode("{>}", "assignment")
 CapsLock & q::Send {[}
@@ -249,8 +249,8 @@ CapsLock & 3::Send {#}
 CapsLock & 4::Send {$}  
 CapsLock & 5::Send {`%}
 CapsLock & n::Send {_}  ;just for easy accessibility 
-CapsLock & t::Send {~}  ;T for Tilde
-CapsLock & b::Send {``}  ;B for Back tick
+CapsLock & a::Send {~}  ;
+CapsLock & x::Send {``}  ;
 CapsLock & y::Send {?}  ;Y for WHY or Whether(?)
 CapsLock & z::Send {z}  ;placeholder!
 CapsLock & =::Send {=}  ;
