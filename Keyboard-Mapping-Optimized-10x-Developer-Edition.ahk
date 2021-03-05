@@ -13,8 +13,8 @@ Hotkey, *o, Off
 Hotkey, *u, Off
 Hotkey, *e, Off
 Hotkey, *h, Off
-Hotkey, *[, Off
-Hotkey, *', Off
+; Hotkey, *[, Off
+Hotkey, *s, Off
 Hotkey, *f, Off
 Hotkey, *., Off
 Hotkey, *`,, Off
@@ -45,8 +45,8 @@ Hotkey, *p, Off
     Hotkey, *u, on
     Hotkey, *e, on
     Hotkey, *h, on
-    Hotkey, *[, on
-    Hotkey, *', on
+    ; Hotkey, *[, on
+    Hotkey, *s, on
     Hotkey, *f, on
     Hotkey, *., on
     Hotkey, *`,, on
@@ -78,8 +78,8 @@ return
     Hotkey, *u, Off
     Hotkey, *e, Off
     Hotkey, *h, Off
-    Hotkey, *[, Off
-    Hotkey, *', Off
+    ; Hotkey, *[, Off
+    Hotkey, *s, Off
     Hotkey, *f, Off
     Hotkey, *., Off
     Hotkey, *`,, Off
@@ -122,18 +122,19 @@ return
 ;"Multiple clipboards for VSCode" publisher:"slevesque"
 ;"Code Ace Jumper" publisher:"lucax88x"
 ;
+
 *e::send {LCtrl Down}{k}{LCtrl Up}{LShift Down}{,}{LShift Up}   ;select inside angled brackets ! "Quick and Simple Text Selection" (extension.selectAngleBrackets)
 *h::send {LCtrl Down}{k}{LCtrl Up}{LShift Down}{.}{LShift Up}   ;select inside HTML tag ! "Quick and Simple Text Selection" (extension.selectInTag)
-*[::send {blind}{LCtrl Down}{k}{LCtrl Up}{[}   ;select inside square/curly bracket ! "Quick and Simple Text Selection" 
-*'::send {LCtrl Down}{k}{LCtrl Up}{LShift Down}{;}{LShift Up}   ;switch quotes ! "Quick and Simple Text Selection" (extension.switchQuotes)
+; *[::send {blind}{LCtrl Down}{k}{LCtrl Up}{[}   ;select inside square/curly bracket ! "Quick and Simple Text Selection" 
+*s::send {F16}{LCtrl Down}{k}{LCtrl Up}{LShift Down}{;}{LShift Up}   ;switch quotes ! "Quick and Simple Text Selection" (extension.switchQuotes)
 *f::send {blind}{F13}    ;(Flip case) flip to lower/upper/camal/firstUpper case !"change-case" (extension.changeCase.lower, extension.changeCase.upper, extension.changeCase.upperFirst)
 *.::send {blind}{F14}    ;swap argument right !"Any Swap" (anySwap.forward)
 *,::send {blind}{F15}    ;swap argument left (anySwap.Backward)
 *q::send {blind}{F16}    ;(Quote) select inside quote !"Bracket Select" (bracket-select.select)
 *m::send {blind}{F17}    ;(Member) jump to next/previous member !"Go to Next/Previous Member" (gotoNextPreviousMember.nextMember, gotoNextPreviousMember.previousMember)
 *w::send {LCtrl Down}{d}{LCtrl Up}    ;(Word) select word, press again to select next occurrence
-*c::send {LCtrl Down}{c}{LCtrl Up}    ;(Copy) copy word ! "copy word in cursor" 
-*x::send {LCtrl Down}{x}{LCtrl Up}    ;(X) cut word/selection !need above extension
+*c::send {LCtrl Down}{d}{c}{LCtrl Up}    ;(Copy) copy word ! "copy word in cursor" 
+*x::send {LCtrl Down}{d}{x}{LCtrl Up}    ;(X) cut word/selection !need above extension
 *v::send {LCtrl Down}{v}{LCtrl Up}    ;(V) Paste 
 *r::send {LCtrl Down}{d}{v}{LCtrl Up}    ;(Replace) replace Word with the clipboard
 *z::send {LCtrl Down}{z}{LCtrl Up}    ;(Z) undo
@@ -153,8 +154,11 @@ return
 ; +\::Send {LCtrl Down}{LShift Down}{Right}{LShift Up}{LCtrl Up}{BackSpace} ;don't send {delete} to avoid triggering the alt+ctrl+delete system-wide command on windows
 ;; ^[::Send {LCtrl Down}{Delete}{LCtrl Up}
 
-; *]::Send {Blind}{\}
+*[::Send {=}
 *`::Escape ;backtick "`" key to send ESCAPE
+*0::Send {_} ; 
+*/::Send {blind}{?} ;
+; *'::Send {"} ; 
 ;;;END of standalone keys
 
 
@@ -222,38 +226,39 @@ CapsLock & o::Send {6}
 CapsLock & 7::Send {7}
 CapsLock & 8::Send {8}
 CapsLock & 9::Send {9}
-CapsLock & 0::Send {0}
-CapsLock & t::SendMode("{-}{>}", "{=}{>}")  ;A for Arrow
+CapsLock & h::Send {0}
 CapsLock & p::SendMode("{+}", "assignment") ;P for Plus
-CapsLock & -::SendMode("{-}", "assignment")
-CapsLock & m::SendMode("{*}", "assignment") ;M for Multiply
+CapsLock & y::SendMode("{-}", "assignment") ;M for Minus
+CapsLock & m::SendMode("{*}", "assignment") ;T for Times
 CapsLock & /::SendMode("{/}", "assignment")
-CapsLock & h::SendMode("{&}", "assignment") ;no mnemonic :) just for easy accessibility 
-CapsLock & g::SendMode("{|}", "assignment")
-CapsLock & 6::SendMode("{^}", "assignment")
+CapsLock & n::SendMode("{&}", "assignment") ;aNd 
+CapsLock & b::SendMode("{|}", "assignment") ;OR (Y shape gate)
+CapsLock & 6::SendMode("{^}", "assignment") ;xor
 CapsLock & `;::SendMode("{:}", "assignment")
-CapsLock & '::Send {'}
-CapsLock & s::Send {"}
-CapsLock & b::Send {\} ;B for Backslash
 CapsLock & e::SendMode("{<}", "assignment")
 CapsLock & r::SendMode("{>}", "assignment")
+CapsLock & g::SendMode("{-}{>}", "{=}{>}")  ;-> (Go to)
+CapsLock & t::Send {~}  ;Tilde
 CapsLock & q::Send {[}
 CapsLock & w::Send {]}
 CapsLock & d::Send {(}
 CapsLock & f::Send {)}
 CapsLock & c::Send {{}
 CapsLock & v::Send {}}
+CapsLock & "::Send {"}
 CapsLock & 1::SendMode("{!}", "assignment")
 CapsLock & 2::Send {@}  
 CapsLock & 3::Send {#}   
 CapsLock & 4::Send {$}  
 CapsLock & 5::Send {`%}
-CapsLock & n::Send {_}  ;just for easy accessibility 
-CapsLock & a::Send {~}  ;
-CapsLock & x::Send {``}  ;
-CapsLock & y::Send {?}  ;Y for WHY or Whether(?)
-CapsLock & z::Send {z}  ;placeholder!
-CapsLock & =::Send {=}  ;
+CapsLock & z::Send {``} ;
+CapsLock & s::Send {_}  ;S for Score
+CapsLock & x::Send {\}  ;
+; CapsLock & 0::Send {_}  ;just for easy accessibility 
+CapsLock & a::Send {a}  ;placeholder!
+CapsLock & =::Send {=}  ; 
+CapsLock & _::Send {_}  ;
+CapsLock & 0::Send {0}  ;
 CapsLock & [::Send {[}  ;
 CapsLock & ]::Send {]}  ;
 CapsLock & ,::Send {,}  ;
