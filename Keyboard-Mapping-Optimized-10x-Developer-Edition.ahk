@@ -238,7 +238,7 @@ CapsLock & `;::SendMode("{:}", "assignment")
 CapsLock & e::SendMode("{<}", "assignment")
 CapsLock & r::SendMode("{>}", "assignment")
 CapsLock & t::SendMode("{-}{>}", "{=}{>}")  ;-> (pointing To)
-CapsLock & g::Send {~}  ;go home 
+CapsLock & x::Send {~}  ;go home 
 CapsLock & q::Send {[}
 CapsLock & w::Send {]}
 CapsLock & d::Send {(}
@@ -252,8 +252,8 @@ CapsLock & 3::Send {#}
 CapsLock & 4::Send {$}  
 CapsLock & 5::Send {`%}
 CapsLock & z::Send {``} ;
-CapsLock & s::Send {_}  ;S for Score
-CapsLock & x::Send {\}  ;
+CapsLock & g::Send {_}  ;
+CapsLock & s::Send {\}  ;
 CapsLock & y::Send {?}  ;
 ; CapsLock & 0::Send {_}  ;just for easy accessibility 
 CapsLock & a::Send {a}  ;placeholder!
