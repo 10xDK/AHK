@@ -148,17 +148,17 @@ return
 *p::send {blind}{F19}   ;(Page) page up or down 
 
 ;;;standalone keys: "[" key send DELETE, Use it if the Delete key is distant on your keyboard.
-*\::Send {Delete}  ;(Delete) 
-^\::Send {LShift Down}{end}{LShift Up}{BackSpace} ;don't send {delete} to avoid triggering the alt+ctrl+delete system-wide command on windows
-+\::Send {LShift Down}{home}{LShift Up}{BackSpace} ;don't send {delete} to avoid triggering the alt+ctrl+delete system-wide command on windows
+*\::Send {Blind}{Delete}  ;(Delete) 
+; ^\::Send {LShift Down}{end}{LShift Up}{BackSpace} ;don't send {delete} to avoid triggering the alt+ctrl+delete system-wide command on windows
+; +\::Send {LShift Down}{home}{LShift Up}{BackSpace} ;don't send {delete} to avoid triggering the alt+ctrl+delete system-wide command on windows
 ; +\::Send {LCtrl Down}{LShift Down}{Right}{LShift Up}{LCtrl Up}{BackSpace} ;don't send {delete} to avoid triggering the alt+ctrl+delete system-wide command on windows
 ;; ^[::Send {LCtrl Down}{Delete}{LCtrl Up}
 
 *[::Send {=}
 *`::Escape ;backtick "`" key to send ESCAPE
-*0::Send {_} ; 
-*/::Send {blind}{?} ;
-; *'::Send {"} ; 
+*0::Send {blind}{-} ; 
+; */::Send {blind}{?} ;
+; *'::Send {blind}{"} ; 
 ;;;END of standalone keys
 
 
@@ -228,7 +228,7 @@ CapsLock & 8::Send {8}
 CapsLock & 9::Send {9}
 CapsLock & h::Send {0}
 CapsLock & p::SendMode("{+}", "assignment") ;P for Plus
-CapsLock & y::SendMode("{-}", "assignment") ;M for Minus
+CapsLock & 0::SendMode("{-}", "assignment") ;M for Minus 
 CapsLock & m::SendMode("{*}", "assignment") ;T for Times
 CapsLock & /::SendMode("{/}", "assignment")
 CapsLock & n::SendMode("{&}", "assignment") ;aNd 
@@ -237,8 +237,8 @@ CapsLock & 6::SendMode("{^}", "assignment") ;xor
 CapsLock & `;::SendMode("{:}", "assignment")
 CapsLock & e::SendMode("{<}", "assignment")
 CapsLock & r::SendMode("{>}", "assignment")
-CapsLock & g::SendMode("{-}{>}", "{=}{>}")  ;-> (Go to)
-CapsLock & t::Send {~}  ;Tilde
+CapsLock & t::SendMode("{-}{>}", "{=}{>}")  ;-> (pointing To)
+CapsLock & g::Send {~}  ;go home 
 CapsLock & q::Send {[}
 CapsLock & w::Send {]}
 CapsLock & d::Send {(}
@@ -254,11 +254,12 @@ CapsLock & 5::Send {`%}
 CapsLock & z::Send {``} ;
 CapsLock & s::Send {_}  ;S for Score
 CapsLock & x::Send {\}  ;
+CapsLock & y::Send {?}  ;
 ; CapsLock & 0::Send {_}  ;just for easy accessibility 
 CapsLock & a::Send {a}  ;placeholder!
+; CapsLock & x::Send {x}  ;placeholder!
 CapsLock & =::Send {=}  ; 
-CapsLock & _::Send {_}  ;
-CapsLock & 0::Send {0}  ;
+; CapsLock & -::Send {_}  
 CapsLock & [::Send {[}  ;
 CapsLock & ]::Send {]}  ;
 CapsLock & ,::Send {,}  ;
