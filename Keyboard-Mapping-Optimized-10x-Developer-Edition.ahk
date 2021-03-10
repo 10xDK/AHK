@@ -245,7 +245,7 @@ CapsLock & d::Send {(}
 CapsLock & f::Send {)}
 CapsLock & c::Send {{}
 CapsLock & v::Send {}}
-CapsLock & "::Send {"}
+CapsLock & s::SendMode(Chr(34), Chr(39))  
 CapsLock & 1::SendMode("{!}", "assignment")
 CapsLock & 2::Send {@}  
 CapsLock & 3::Send {#}   
@@ -253,10 +253,10 @@ CapsLock & 4::Send {$}
 CapsLock & 5::Send {`%}
 CapsLock & z::Send {``} ;
 CapsLock & g::Send {_}  ;
-CapsLock & s::Send {\}  ;
+CapsLock & a::Send {\}  ;
 CapsLock & y::Send {?}  ;
 ; CapsLock & 0::Send {_}  ;just for easy accessibility 
-CapsLock & a::Send {a}  ;placeholder!
+; CapsLock & a::Send {a}  ;placeholder!
 ; CapsLock & x::Send {x}  ;placeholder!
 CapsLock & =::Send {=}  ; 
 ; CapsLock & -::Send {_}  
