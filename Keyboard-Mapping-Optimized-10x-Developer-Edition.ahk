@@ -24,7 +24,7 @@ Hotkey, *q, Off
 Hotkey, *c, Off
 Hotkey, *x, Off
 Hotkey, *v, Off
-Hotkey, *r, Off
+; Hotkey, *r, Off
 Hotkey, *z, Off
 Hotkey, *y, Off
 Hotkey, *t, Off
@@ -56,7 +56,7 @@ Hotkey, *p, Off
     Hotkey, *c, on
     Hotkey, *x, on
     Hotkey, *v, on
-    Hotkey, *r, on
+    ; Hotkey, *r, on
     Hotkey, *z, on
     Hotkey, *y, on
     Hotkey, *t, on
@@ -89,7 +89,7 @@ return
     Hotkey, *c, Off
     Hotkey, *x, Off
     Hotkey, *v, Off
-    Hotkey, *r, Off
+    ; Hotkey, *r, Off
     Hotkey, *z, Off
     Hotkey, *y, Off
     Hotkey, *t, Off
@@ -132,11 +132,11 @@ return
 *,::send {blind}{F15}    ;swap argument left (anySwap.Backward)
 *q::send {blind}{F16}    ;(Quote) select inside quote !"Bracket Select" (bracket-select.select)
 *m::send {blind}{F17}    ;(Member) jump to next/previous member !"Go to Next/Previous Member" (gotoNextPreviousMember.nextMember, gotoNextPreviousMember.previousMember)
-*w::send {LCtrl Down}{d}{LCtrl Up}    ;(Word) select word, press again to select next occurrence
-*c::send {LCtrl Down}{d}{c}{LCtrl Up}    ;(Copy) copy word ! "copy word in cursor" 
-*x::send {LCtrl Down}{d}{x}{LCtrl Up}    ;(X) cut word/selection !need above extension
+*w::send {blind}{LCtrl Down}{d}{LCtrl Up}    ;(Word) select word, press again to select next occurrence
+*c::send {LCtrl Down}{c}{LCtrl Up}    ;(Copy) copy word ! "copy word in cursor" 
+*x::send {LCtrl Down}{x}{LCtrl Up}    ;(X) cut word/selection !need above extension
 *v::send {LCtrl Down}{v}{LCtrl Up}    ;(V) Paste 
-*r::send {LCtrl Down}{d}{v}{LCtrl Up}    ;(Replace) replace Word with the clipboard
+;*r::send {LCtrl Down}{d}{v}{LCtrl Up}    ;(Replace) replace Word with the clipboard
 *z::send {LCtrl Down}{z}{LCtrl Up}    ;(Z) undo
 *y::send {LCtrl Down}{y}{LCtrl Up}    ;(Y) redo
 *t::send {home}{LShift Down}{end}{LShift Up}    ;(Text) select all Text in line (excluding the indent)
@@ -238,26 +238,31 @@ CapsLock & `;::SendMode("{:}", "assignment")
 CapsLock & e::SendMode("{<}", "assignment")
 CapsLock & r::SendMode("{>}", "assignment")
 CapsLock & t::SendMode("{-}{>}", "{=}{>}")  ;-> (pointing To)
-CapsLock & x::Send {~}  ;go home 
+
 CapsLock & q::Send {[}
 CapsLock & w::Send {]}
 CapsLock & d::Send {(}
 CapsLock & f::Send {)}
 CapsLock & c::Send {{}
 CapsLock & v::Send {}}
-CapsLock & s::SendMode(Chr(34), Chr(39))  
+
 CapsLock & 1::SendMode("{!}", "assignment")
 CapsLock & 2::Send {@}  
 CapsLock & 3::Send {#}   
 CapsLock & 4::Send {$}  
-CapsLock & 5::Send {`%}
-CapsLock & z::Send {``} ;
-CapsLock & g::Send {_}  ;
-CapsLock & a::Send {\}  ;
+CapsLock & 5::SendMode("{`%}", "assignment")
+
 CapsLock & y::Send {?}  ;
+CapsLock & g::Send {_}  ;
+CapsLock & s::SendMode(Chr(34), Chr(39))  
+CapsLock & a::Send {\}  ;
+CapsLock & x::Send {~}  ;go home 
+CapsLock & z::Send {``} ;
+
+;placeholder
 ; CapsLock & 0::Send {_}  ;just for easy accessibility 
-; CapsLock & a::Send {a}  ;placeholder!
-; CapsLock & x::Send {x}  ;placeholder!
+; CapsLock & a::Send {a}  ;
+; CapsLock & x::Send {x}  ;
 CapsLock & =::Send {=}  ; 
 ; CapsLock & -::Send {_}  
 CapsLock & [::Send {[}  ;
