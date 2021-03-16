@@ -8,9 +8,14 @@ SetWorkingDir, %A_ScriptDir%
 
 #KeyHistory 0
 
+;How long the Shift should stay active this value is in seconds. use 0.5 for half secondif you want a capital A, then press and release Shift, then press 'a' within two seconds after the timeout has elapsed, the shift is no longer in effect
 timeout := 0.3
+
+;Should tapping shift twice turn on Capslock? this value is either 'true' or 'false' with no quotes default is 'false', which means a double tap of Shift will cancel the shift
+double_shift_for_caps := true
+
+;Allow the sequence "Shift,Space,Key" to still shift the Key this value is either 'true' or 'false' with no quotes this means that the Spacebar will not cancel the shift a user wanted to press Shift+Space to be able to shift the next char after Space
 skip_spacebar := true
-double_shift_for_caps := true 
 
 ; we don't want Control as end key, because we need to be able to press Shift,Ctrl+Left
 ; we don't want Alt as end key, because Shift+Alt+F should still open up File menu bars
@@ -158,7 +163,7 @@ return
 ;"copy word in cursor" publisher:"Alessandro Fragnani"
 ;"Semicolon Insertion Shortcut" publisher:"Christian Valentin"
 ;"Multiple clipboards for VSCode" publisher:"slevesque"
-;"Code Ace Jumper" publisher:"lucax88x"
+;"Metago"
 ;
 
 *w::send {blind}{LCtrl Down}{d}{LCtrl Up} ;(Word) select word, press again to select next occurrence
@@ -170,12 +175,10 @@ return
 *y::send {LCtrl Down}{y}{LCtrl Up} ;(Y) redo
 *t::send {home}{LShift Down}{end}{LShift Up} ;(Text) select all Text in line (excluding the indent)
 *a::send {LCtrl Down}{l}{LCtrl Up} ;(All) select all thing in a line including the indent
-*d::send {LAlt Down}{d}{LAlt Up} ;(Delete) to 
 
 *e::send {LCtrl Down}{k}{LCtrl Up}{LShift Down}{,}{LShift Up} ;select inside angled brackets ! "Quick and Simple Text Selection" (extension.selectAngleBrackets)
 *h::send {LCtrl Down}{k}{LCtrl Up}{LShift Down}{.}{LShift Up} ;select inside HTML tag ! "Quick and Simple Text Selection" (extension.selectInTag)
 ; *[::send {blind}{LCtrl Down}{k}{LCtrl Up}{[}   ;select inside square/curly bracket ! "Quick and Simple Text Selection" 
-*s::send {F16}{LCtrl Down}{k}{LCtrl Up}{LShift Down}{;}{LShift Up}   ;switch quotes ! "Quick and Simple Text Selection" (extension.switchQuotes)
 *f::send {blind}{F13} ;(Flip case) flip to lower/upper/camal/firstUpper case !"change-case" (extension.changeCase.lower, extension.changeCase.upper, extension.changeCase.upperFirst)
 *.::send {blind}{F14} ;swap argument right !"Any Swap" (anySwap.forward)
 *,::send {blind}{F15} ;swap argument left (anySwap.Backward)
@@ -183,7 +186,9 @@ return
 *m::send {blind}{F17} ;(Member) jump to next/previous member !"Go to Next/Previous Member" (gotoNextPreviousMember.nextMember, gotoNextPreviousMember.previousMember)
 
 *;::send {blind}{LCtrl Down}{LShift Down}{;}{LShift Up}{LCtrl Up}    ;add ;/: at end of line !Semicolon Insertion Shortcut
-*g::send {Blind}{LCtrl Down}{g}{LCtrl Up} ;(Goto) go to word, RALT+SHIFT+G go to line !ACE Jumper
+*g::send {Blind}{LCtrl Down}{g}{LCtrl Up} ;(Goto) go to word !Metago
+*s::send {LCtrl Down}{LShift Down}{g}{LShift Up}{LCtrl Up} ;(Select to)
+*d::send {LAlt Down}{d}{LAlt Up} ;(Delete to) 
 *b::send {blind}{F18} ;(Board) clipboard buffer
 *p::send {blind}{F19} ;(Page) page up or down 
 
@@ -196,9 +201,8 @@ return
 ;;;standalone keys: "[" key send DELETE, Use it if the Delete key is distant on your keyboard.
 *\::Send {Blind}{Delete} ;(Delete) 
 ; ^\::Send {LShift Down}{end}{LShift Up}{BackSpace} ;don't send {delete} to avoid triggering the alt+ctrl+delete system-wide command on windows
-; +\::Send {LShift Down}{home}{LShift Up}{BackSpace} ;don't send {delete} to avoid triggering the alt+ctrl+delete system-wide command on windows
-; +\::Send {LCtrl Down}{LShift Down}{Right}{LShift Up}{LCtrl Up}{BackSpace} ;don't send {delete} to avoid triggering the alt+ctrl+delete system-wide command on windows
 ;; ^[::Send {LCtrl Down}{Delete}{LCtrl Up}
+
 *[::Send {=}
 *`::Escape ;backtick "`" key to send ESCAPE
 *0::Send {blind}{-} ; 
