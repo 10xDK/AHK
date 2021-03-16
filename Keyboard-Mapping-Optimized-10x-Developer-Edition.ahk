@@ -35,6 +35,11 @@ Hotkey, *g, Off
 Hotkey, *t, Off
 Hotkey, *b, Off
 Hotkey, *p, Off
+Hotkey, *1, Off
+Hotkey, *2, Off
+Hotkey, *3, Off
+Hotkey, *4, Off
+Hotkey, *5, Off
 
 *RAlt::
     Hotkey, *i, on
@@ -67,6 +72,11 @@ Hotkey, *p, Off
     Hotkey, *t, on
     Hotkey, *b, on
     Hotkey, *p, on
+    Hotkey, *1, on
+    Hotkey, *2, on
+    Hotkey, *3, on
+    Hotkey, *4, on
+    Hotkey, *5, on
 return
 
 *RAlt up::
@@ -100,6 +110,11 @@ return
     Hotkey, *t, Off
     Hotkey, *b, Off
     Hotkey, *p, Off
+    Hotkey, *1, Off
+    Hotkey, *2, Off
+    Hotkey, *3, Off
+    Hotkey, *4, Off
+    Hotkey, *5, Off
 return
 
 ;RALT combos:   
@@ -146,6 +161,11 @@ return
 *g::send {Blind}{LCtrl Down}{g}{LCtrl Up}   ;(Goto) go to word, RALT+SHIFT+G go to line !ACE Jumper
 *b::send {blind}{F18}   ;(Board) clipboard buffer
 *p::send {blind}{F19}   ;(Page) page up or down 
+*5::send {LCtrl Down}{d}{t}{LCtrl Up}
+*1::send {F12}  ;goto definition
+*2::send {LAlt Down}{F12}{LAlt Up}  ;peek definition
+*3::send {LShift Down}{LAlt Down}{h}{LAlt Up}{LShift Up}  ;peek definition
+*4::send {LCtrl Down}{LShift Down}{o}{LShift Up}{LCtrl Up}  ;peek definition
 
 ;;;standalone keys: "[" key send DELETE, Use it if the Delete key is distant on your keyboard.
 *\::Send {Blind}{Delete}  ;(Delete) 
@@ -204,12 +224,13 @@ return
 
 SendMode(key, mode) {
     LAlt := GetKeyState("LALT", "P")
+    RAlt := GetKeyState("RALT", "P")
 
-    if LAlt {
+    if (LAlt || RAlt) {
         switch mode {
             case "assignment":  Send, %key%=
             case "string":      Send, %key%
-            Default:            Send, %mode% ; switch
+            Default:            Send, %mode% ; switch 
         }
     }
     else {
@@ -229,10 +250,10 @@ CapsLock & 9::Send {9}
 CapsLock & h::Send {0}
 CapsLock & p::SendMode("{+}", "assignment") ;P for Plus
 CapsLock & 0::SendMode("{-}", "assignment") ;M for Minus 
-CapsLock & m::SendMode("{*}", "assignment") ;T for Times
+CapsLock & m::SendMode("{*}", "assignment") ;T for Times 
 CapsLock & /::SendMode("{/}", "assignment")
 CapsLock & n::SendMode("{&}", "assignment") ;aNd 
-CapsLock & b::SendMode("{|}", "assignment") ;OR (Y shape gate)
+CapsLock & b::SendMode("{|}", "assignment") ;OR 
 CapsLock & 6::SendMode("{^}", "assignment") ;xor
 CapsLock & `;::SendMode("{:}", "assignment")
 CapsLock & e::SendMode("{<}", "assignment")
@@ -255,7 +276,7 @@ CapsLock & 5::SendMode("{`%}", "assignment")
 CapsLock & y::Send {?}  ;
 CapsLock & g::Send {_}  ;
 CapsLock & s::SendMode(Chr(34), Chr(39))  
-CapsLock & a::Send {\}  ;
+CapsLock & a::Send {\}  ; 
 CapsLock & x::Send {~}  ;go home 
 CapsLock & z::Send {``} ;
 
@@ -265,7 +286,7 @@ CapsLock & z::Send {``} ;
 ; CapsLock & x::Send {x}  ;
 CapsLock & =::Send {=}  ; 
 ; CapsLock & -::Send {_}  
-CapsLock & [::Send {[}  ;
+CapsLock & [::Send {=}  ;
 CapsLock & ]::Send {]}  ;
 CapsLock & ,::Send {,}  ;
 CapsLock & .::Send {.}  ;
