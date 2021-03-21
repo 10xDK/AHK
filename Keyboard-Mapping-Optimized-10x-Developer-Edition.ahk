@@ -39,8 +39,8 @@ Hotkey, *k, Off
 Hotkey, *l, Off
 Hotkey, *o, Off
 Hotkey, *u, Off
-Hotkey, *e, Off
-Hotkey, *h, Off
+; Hotkey, *e, Off
+; Hotkey, *h, Off
 ; Hotkey, *[, Off
 Hotkey, *s, Off
 Hotkey, *f, Off
@@ -68,6 +68,9 @@ Hotkey, *2, Off
 Hotkey, *3, Off
 Hotkey, *4, Off
 Hotkey, *5, Off
+Hotkey, *6, Off
+; Hotkey, *9, Off
+Hotkey, *n, Off
 
 *AppsKey::
     Hotkey, *i, on
@@ -76,8 +79,8 @@ Hotkey, *5, Off
     Hotkey, *l, on
     Hotkey, *o, on
     Hotkey, *u, on
-    Hotkey, *e, on
-    Hotkey, *h, on
+    ; Hotkey, *e, on
+    ; Hotkey, *h, on
     ; Hotkey, *[, on
     Hotkey, *s, on
     Hotkey, *f, on
@@ -105,6 +108,9 @@ Hotkey, *5, Off
     Hotkey, *3, on
     Hotkey, *4, on
     Hotkey, *5, on
+    Hotkey, *6, on
+    ; Hotkey, *9, on
+    Hotkey, *n, on
 return
 
 *AppsKey up::
@@ -114,8 +120,8 @@ return
     Hotkey, *l, off
     Hotkey, *o, Off
     Hotkey, *u, Off
-    Hotkey, *e, Off
-    Hotkey, *h, Off
+    ; Hotkey, *e, Off
+    ; Hotkey, *h, Off
     ; Hotkey, *[, Off
     Hotkey, *s, Off
     Hotkey, *f, Off
@@ -143,9 +149,12 @@ return
     Hotkey, *3, Off
     Hotkey, *4, Off
     Hotkey, *5, Off
+    Hotkey, *6, Off
+    ; Hotkey, *9, Off
+    Hotkey, *n, Off
 return
 
-;RALT combos:   
+;RALT combos:
 *i::send {blind}{up}
 *j::send {blind}{left}
 *k::send {blind}{down}
@@ -154,9 +163,9 @@ return
 *u::send {blind}{home}
 ;
 ; Custom commands are software-dependent and need manual configuration for the keybinds.
-; Below are the required extensions for VSCode: 
+; Below are the required extensions for VSCode:
 ;"Bracket Select" publisher:"Chunsen Wang"
-;"Quick and Simple Text Selection" publisher:"David Bankier" 
+;"Quick and Simple Text Selection" publisher:"David Bankier"
 ;"change-case" publisher:"wmaurer"
 ;"Go to Next/Previous Member" publisher:"Mishkin Faustini"
 ;"Any Swap" by publisher:"wolray"
@@ -167,51 +176,58 @@ return
 ;
 
 *w::send {blind}{LCtrl Down}{d}{LCtrl Up} ;(Word) select word, press again to select next occurrence
-*c::send {LCtrl Down}{c}{LCtrl Up} ;(Copy) copy word ! "copy word in cursor" 
+*c::send {LCtrl Down}{c}{LCtrl Up} ;(Copy) copy word ! "copy word in cursor"
 *x::send {LCtrl Down}{x}{LCtrl Up} ;(X) cut word/selection !need above extension
-*v::send {LCtrl Down}{v}{LCtrl Up} ;(V) Paste 
+*v::send {LCtrl Down}{v}{LCtrl Up} ;(V) Paste
 ;*r::send {LCtrl Down}{d}{v}{LCtrl Up}    ;(Replace) replace Word with the clipboard
 *z::send {LCtrl Down}{z}{LCtrl Up} ;(Z) undo
 *y::send {LCtrl Down}{y}{LCtrl Up} ;(Y) redo
 *t::send {home}{LShift Down}{end}{LShift Up} ;(Text) select all Text in line (excluding the indent)
-*a::send {LCtrl Down}{l}{LCtrl Up} ;(All) select all thing in a line including the indent
+*a::send {Blind}{LCtrl Down}{g}{LCtrl Up} ;(All) select all thing in a line including the indent
 
-*e::send {LCtrl Down}{k}{LCtrl Up}{LShift Down}{,}{LShift Up} ;select inside angled brackets ! "Quick and Simple Text Selection" (extension.selectAngleBrackets)
-*h::send {LCtrl Down}{k}{LCtrl Up}{LShift Down}{.}{LShift Up} ;select inside HTML tag ! "Quick and Simple Text Selection" (extension.selectInTag)
-; *[::send {blind}{LCtrl Down}{k}{LCtrl Up}{[}   ;select inside square/curly bracket ! "Quick and Simple Text Selection" 
+; *e::send {LCtrl Down}{k}{LCtrl Up}{LShift Down}{,}{LShift Up} ;select inside angled brackets ! "Quick and Simple Text Selection" (extension.selectAngleBrackets)
+; *h::send {LCtrl Down}{k}{LCtrl Up}{LShift Down}{.}{LShift Up} ;select inside HTML tag ! "Quick and Simple Text Selection" (extension.selectInTag)
+; *[::send {blind}{LCtrl Down}{k}{LCtrl Up}{[}   ;select inside square/curly bracket ! "Quick and Simple Text Selection"
 *f::send {blind}{F13} ;(Flip case) flip to lower/upper/camal/firstUpper case !"change-case" (extension.changeCase.lower, extension.changeCase.upper, extension.changeCase.upperFirst)
 *.::send {blind}{F14} ;swap argument right !"Any Swap" (anySwap.forward)
 *,::send {blind}{F15} ;swap argument left (anySwap.Backward)
 *q::send {blind}{F16} ;(Quote) select inside quote !"Bracket Select" (bracket-select.select)
 *m::send {blind}{F17} ;(Member) jump to next/previous member !"Go to Next/Previous Member" (gotoNextPreviousMember.nextMember, gotoNextPreviousMember.previousMember)
 
-*;::send {blind}{LCtrl Down}{LShift Down}{;}{LShift Up}{LCtrl Up}    ;add ;/: at end of line !Semicolon Insertion Shortcut
-*g::send {Blind}{LCtrl Down}{g}{LCtrl Up} ;(Goto) go to word !Metago
-*s::send {LCtrl Down}{LShift Down}{g}{LShift Up}{LCtrl Up} ;(Select to)
-*d::send {LAlt Down}{d}{LAlt Up} ;(Delete to) 
-*b::send {blind}{F18} ;(Board) clipboard buffer
-*p::send {blind}{F19} ;(Page) page up or down 
+*;::send {blind}{LCtrl Down}{LShift Down}{;}{LShift Up}{LCtrl Up}    ;add ;: at end of line !Semicolon Insertion Shortcut
+; *g::send {Blind}{LCtrl Down}{g}{LCtrl Up} ;(Goto) go to word !Metago
+; *s::send {LCtrl Down}{LShift Down}{LAlt Down}{g}{LAlt Up}{LShift Up}{LCtrl Up} ;(Select to)
+*g::send {Blind}{F18}
+*s::send {Blind}{F19}
+; *d::send {LAlt Down}{d}{LAlt Up} ;(Delete to)
+*d::send {Blind}{Delete}
+*p::send {blind}{PgDn} ;(Page) page up or down
 
-*5::send {LCtrl Down}{d}{t}{LCtrl Up}
-*1::send {F12} ;goto definition
+*6::send {LCtrl Down}{d}{t}{LCtrl Up}   ;transpose
+*1::send {LCtrl Down}{k}{LCtrl Up}{LCtrl Down}{i}{LCtrl Up}   ;display hover
 *2::send {LAlt Down}{F12}{LAlt Up} ;peek definition
-*3::send {LShift Down}{LAlt Down}{h}{LAlt Up}{LShift Up} ;peek definition
-*4::send {LCtrl Down}{LShift Down}{o}{LShift Up}{LCtrl Up} ;peek definition
+*3::send {LShift Down}{LAlt Down}{h}{LAlt Up}{LShift Up} ;hierarchy
+*4::send {LCtrl Down}{LShift Down}{o}{LShift Up}{LCtrl Up} ;goto symbol
+*5::send {F12} ;goto definition
+
+*b::send {end}{space}{{}{}}{left}{enter}    ;add bracket{}and start a new line
+*n::send {LCtrl Down}{k}{LCtrl Up}{n}
 
 ;;;standalone keys: "[" key send DELETE, Use it if the Delete key is distant on your keyboard.
-*\::Send {Blind}{Delete} ;(Delete) 
+*=::Send {Blind}{BackSpace} ;(Backspace)
+; *-::Send {Blind}{Delete} ;(Delete)
 ; ^\::Send {LShift Down}{end}{LShift Up}{BackSpace} ;don't send {delete} to avoid triggering the alt+ctrl+delete system-wide command on windows
 ;; ^[::Send {LCtrl Down}{Delete}{LCtrl Up}
 
-*[::Send {=}
+*[::Send {=} ;
 *`::Escape ;backtick "`" key to send ESCAPE
-*0::Send {blind}{-} ; 
+*0::Send {blind}{-} ;
 ; */::Send {blind}{?} ;
-; *'::Send {blind}{"} ; 
+; *'::Send {blind}{"} ;
 ;;;END of standalone keys
 
-; CapsLock Mode 1: double press CapsLock to turn on, single press to turn off.. 
-; CapsLock:: 
+; CapsLock Mode 1: double press CapsLock to turn on, single press to turn off..
+; CapsLock::
 ;     ; MsgBox, %A_PriorHotkey%
 ;     if (A_PriorHotkey != "*Capslock Up" or A_TimeSincePriorHotkey > timeout * 1000)
 ;     {
@@ -225,14 +241,14 @@ return
 ;     CLState := 1
 ; return
 
-; ; CapsLock Mode 2: double press CapsLock to turn it on/off.. 
-; CapsLock:: 
+; ; CapsLock Mode 2: double press CapsLock to turn it on/off..
+; CapsLock::
 ;     ; MsgBox, %A_PriorHotkey%
 ;     if (A_PriorHotkey == "*Capslock Up" and A_TimeSincePriorHotkey < timeout * 1000)
 ;     {
 ;         KeyWait, CapsLock
 
-;         if GetKeyState("CapsLock", "T") 
+;         if GetKeyState("CapsLock", "T")
 ;         {
 ;             SetCapsLockState, off
 ;             CLState := 0
@@ -245,14 +261,14 @@ return
 ;     }
 ; Return
 
-*Capslock Up:: ; Fire the hotkey even if extra modifiers are being held down. 
+*Capslock Up:: ; Fire the hotkey even if extra modifiers are being held down.
     if (double_shift_for_caps == 1)
-    { 
+    {
         SetCapsLockState, off
     }
     else
     {
-        if CLState == 0
+        if (CLState == 0)
             SetCapsLockState, off
     }
 return
@@ -265,7 +281,7 @@ SendMode(key, mode) {
         switch mode {
             case "assignment": Send, %key%=
             case "string": Send, %key%
-            Default: Send, %mode% ; switch 
+            Default: Send, %mode% ; switch
         }
     }
     else {
@@ -282,20 +298,20 @@ CapsLock & o::Send {6}
 CapsLock & 7::Send {7}
 CapsLock & 8::Send {8}
 CapsLock & 9::Send {9}
-CapsLock & h::Send {0}
+CapsLock & m::Send {0}
 CapsLock & p::SendMode("{+}", "assignment") ;P for Plus
-CapsLock & 0::SendMode("{-}", "assignment") ;M for Minus 
-CapsLock & m::SendMode("{*}", "assignment") ;T for Times 
+CapsLock & 0::SendMode("{-}", "assignment") ;M for Minus
+CapsLock & h::SendMode("{*}", "assignment") ;T for Times
 CapsLock & /::SendMode("{/}", "assignment")
-CapsLock & n::SendMode("{&}", "assignment") ;aNd 
-CapsLock & b::SendMode("{|}", "assignment") ;OR 
+CapsLock & n::SendMode("{&}", "assignment") ;aNd
+CapsLock & b::SendMode("{|}", "assignment") ;OR
 CapsLock & 6::SendMode("{^}", "assignment") ;xor
 CapsLock & `;::SendMode("{:}", "assignment")
 CapsLock & e::SendMode("{<}", "assignment")
 CapsLock & r::SendMode("{>}", "assignment")
 CapsLock & t::SendMode("{-}{>}", "{=}{>}") ;-> (pointing To)
 
-CapsLock & q::Send {[} 
+CapsLock & q::Send {[}
 CapsLock & w::Send {]}
 CapsLock & d::Send {(}
 CapsLock & f::Send {)}
@@ -303,24 +319,27 @@ CapsLock & c::Send {{}
 CapsLock & v::Send {}}
 
 CapsLock & 1::SendMode("{!}", "assignment")
-CapsLock & 2::Send {@} 
-CapsLock & 3::Send {#} 
-CapsLock & 4::Send {$} 
+CapsLock & 2::Send {@}
+CapsLock & 3::Send {#}
+CapsLock & 4::Send {$}
 CapsLock & 5::SendMode("{`%}", "assignment")
 
 CapsLock & y::Send {?} ;
 CapsLock & g::Send {_} ;
-CapsLock & s::SendMode(Chr(34), Chr(39)) 
-CapsLock & a::Send {\} ; 
-CapsLock & x::Send {~} ;go home 
-CapsLock & z::Send {``} ;
+; CapsLock & s::SendMode(Chr(34), Chr(39))
+CapsLock & s::Send {"}
+CapsLock & a::Send {'} ;
+CapsLock & x::Send {``} ;
+CapsLock & z::Send {\} ;
+
+CapsLock & `::Send {~}
 
 ;placeholder
-; CapsLock & 0::Send {_}  ;just for easy accessibility 
+; CapsLock & 0::Send {_}  ;just for easy accessibility
 ; CapsLock & a::Send {a}  ;
 ; CapsLock & x::Send {x}  ;
-CapsLock & =::Send {=} ; 
-; CapsLock & -::Send {_}  
+CapsLock & =::Send {BackSpace} ;
+CapsLock & -::Send {Delete}
 CapsLock & [::Send {=} ;
 CapsLock & ]::Send {]} ;
 CapsLock & ,::Send {,} ;
@@ -329,15 +348,17 @@ CapsLock & \::Send {Delete} ;
 CapsLock & Backspace::Send {Backspace} ;
 CapsLock & Enter::Send {Enter} ;
 CapsLock & Space::Send {Space} ;
+CapsLock & AppsKey::Send {AppsKey} ;
 ; CapsLock & @::SendMode("ummmmm@gmail.com", "string")
 
-;disable keys: 
-;   
-<+9::return ;disable left shift + 9 
-<++::return
-<+8::return
+; ;disable keys:
+;disable keys:
+;
+; <+9::return ;disable left shift + 9
+; <++::return
+; <+8::return
 ; <+[::return
-; <+]::return   
+; <+]::return
 ; *[::return
 
 Shift_Down:
