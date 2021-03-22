@@ -61,14 +61,20 @@ Hotkey, *d, Off
 Hotkey, *`;, Off
 Hotkey, *g, Off
 Hotkey, *t, Off
-Hotkey, *b, Off
+; Hotkey, *b, Off
 Hotkey, *p, Off
-Hotkey, *1, Off
-Hotkey, *2, Off
-Hotkey, *3, Off
-Hotkey, *4, Off
-Hotkey, *5, Off
-Hotkey, *6, Off
+; Hotkey, *!, Off
+; Hotkey, *@, Off
+; Hotkey, *#, Off
+; Hotkey, *$, Off
+; Hotkey, *`%, Off
+; Hotkey, *^, Off
+Hotkey, 1, Off
+Hotkey, 2, Off
+Hotkey, 3, Off
+Hotkey, 4, Off
+Hotkey, 5, Off
+Hotkey, 6, Off
 ; Hotkey, *9, Off
 Hotkey, *n, Off
 
@@ -101,14 +107,20 @@ Hotkey, *n, Off
     Hotkey, *`;, on
     Hotkey, *g, on
     Hotkey, *t, on
-    Hotkey, *b, on
+    ; Hotkey, *b, on
     Hotkey, *p, on
-    Hotkey, *1, on
-    Hotkey, *2, on
-    Hotkey, *3, on
-    Hotkey, *4, on
-    Hotkey, *5, on
-    Hotkey, *6, on
+    ; Hotkey, *!, on
+    ; Hotkey, *@, on
+    ; Hotkey, *#, on
+    ; Hotkey, *$, on
+    ; Hotkey, *`%, on
+    ; Hotkey, *^, on
+Hotkey, 1, On
+Hotkey, 2, On
+Hotkey, 3, On
+Hotkey, 4, On
+Hotkey, 5, On
+Hotkey, 6, On
     ; Hotkey, *9, on
     Hotkey, *n, on
 return
@@ -142,14 +154,20 @@ return
     Hotkey, *`;, Off
     Hotkey, *g, Off
     Hotkey, *t, Off
-    Hotkey, *b, Off
+    ; Hotkey, *b, Off
     Hotkey, *p, Off
-    Hotkey, *1, Off
-    Hotkey, *2, Off
-    Hotkey, *3, Off
-    Hotkey, *4, Off
-    Hotkey, *5, Off
-    Hotkey, *6, Off
+    ; Hotkey, *!, Off
+    ; Hotkey, *@, Off
+    ; Hotkey, *#, Off
+    ; Hotkey, *$, Off
+    ; Hotkey, *`%, Off
+    ; Hotkey, *^, Off
+Hotkey, 1, Off
+Hotkey, 2, Off
+Hotkey, 3, Off
+Hotkey, 4, Off
+Hotkey, 5, Off
+Hotkey, 6, Off
     ; Hotkey, *9, Off
     Hotkey, *n, Off
 return
@@ -203,25 +221,49 @@ return
 *d::send {Blind}{Delete}
 *p::send {blind}{PgDn} ;(Page) page up or down
 
-*6::send {LCtrl Down}{d}{t}{LCtrl Up}   ;transpose
-*1::send {LCtrl Down}{k}{LCtrl Up}{LCtrl Down}{i}{LCtrl Up}   ;display hover
-*2::send {LAlt Down}{F12}{LAlt Up} ;peek definition
-*3::send {LShift Down}{LAlt Down}{h}{LAlt Up}{LShift Up} ;hierarchy
-*4::send {LCtrl Down}{LShift Down}{o}{LShift Up}{LCtrl Up} ;goto symbol
-*5::send {F12} ;goto definition
+1::send {LCtrl Down}{k}{LCtrl Up}{LCtrl Down}{i}{LCtrl Up}   ;display hover
+2::send {LAlt Down}{F12}{LAlt Up} ;peek definition
+3::send {LShift Down}{LAlt Down}{h}{LAlt Up}{LShift Up} ;hierarchy
+4::send {LCtrl Down}{LShift Down}{o}{LShift Up}{LCtrl Up} ;goto symbol
+5::send {F12} ;goto definition
+6::send {LCtrl Down}{d}{t}{LCtrl Up}   ;transpose
 
-*b::send {end}{space}{{}{}}{left}{enter}    ;add bracket{}and start a new line
+; *b::send {end}{space}{{}{}}{left}{enter}    ;add bracket{}and start a new line
 *n::send {LCtrl Down}{k}{LCtrl Up}{n}
 
 ;;;standalone keys: "[" key send DELETE, Use it if the Delete key is distant on your keyboard.
-*=::Send {Blind}{BackSpace} ;(Backspace)
+; *=::Send {Blind}{BackSpace} ;(Backspace)
 ; *-::Send {Blind}{Delete} ;(Delete)
 ; ^\::Send {LShift Down}{end}{LShift Up}{BackSpace} ;don't send {delete} to avoid triggering the alt+ctrl+delete system-wide command on windows
 ;; ^[::Send {LCtrl Down}{Delete}{LCtrl Up}
 
-*[::Send {=} ;
+; *[::Send {=} ;
 *`::Escape ;backtick "`" key to send ESCAPE
-*0::Send {blind}{-} ;
+; *0::Send {blind}{-} ;!@#$%^
+
+; #F11::Reload;
+
+
+*1::send {Blind}{!} ;b
+*2::send {Blind}{@}
+*3::send {Blind}{#}
+*4::send {Blind}{$}
+*5::send {Blind}{`%}
+*6::send {Blind}{^}
+
+*7::Send {_}    ;123456_!@#abc
+*8::Send {Blind}{BackSpace} ;(Backspace)
+*9::Send {Blind}{Delete}    ;
+*0::Send {Blind}{-} ;
+*-::Send {Blind}{=} ;
+*[::Send {Blind}{Enter} ;
+
+#F11::
+; Send, ^s ; To save a changed script
+Sleep, 300 ; give it time to save the script
+Reload
+Return
+
 ; */::Send {blind}{?} ;
 ; *'::Send {blind}{"} ;
 ;;;END of standalone keys
@@ -289,23 +331,22 @@ SendMode(key, mode) {
     }
 }
 
-CapsLock & j::Send {1}
-CapsLock & k::Send {2}
-CapsLock & l::Send {3}
-CapsLock & u::Send {4}
-CapsLock & i::Send {5}
-CapsLock & o::Send {6}
-CapsLock & 7::Send {7}
-CapsLock & 8::Send {8}
-CapsLock & 9::Send {9}
-CapsLock & m::Send {0}
+CapsLock & j::Send {Blind}{1}
+CapsLock & k::Send {Blind}{2}
+CapsLock & l::Send {Blind}{3}
+CapsLock & u::Send {Blind}{4}
+CapsLock & i::Send {Blind}{5}
+CapsLock & o::Send {Blind}{6}
+CapsLock & 7::Send {Blind}{7}
+CapsLock & 8::Send {Blind}{8}
+CapsLock & 9::Send {Blind}{9}
+CapsLock & m::Send {Blind}{0}
 CapsLock & p::SendMode("{+}", "assignment") ;P for Plus
 CapsLock & 0::SendMode("{-}", "assignment") ;M for Minus
 CapsLock & h::SendMode("{*}", "assignment") ;T for Times
 CapsLock & /::SendMode("{/}", "assignment")
 CapsLock & n::SendMode("{&}", "assignment") ;aNd
 CapsLock & b::SendMode("{|}", "assignment") ;OR
-CapsLock & 6::SendMode("{^}", "assignment") ;xor
 CapsLock & `;::SendMode("{:}", "assignment")
 CapsLock & e::SendMode("{<}", "assignment")
 CapsLock & r::SendMode("{>}", "assignment")
@@ -318,29 +359,43 @@ CapsLock & f::Send {)}
 CapsLock & c::Send {{}
 CapsLock & v::Send {}}
 
-CapsLock & 1::SendMode("{!}", "assignment")
-CapsLock & 2::Send {@}
-CapsLock & 3::Send {#}
-CapsLock & 4::Send {$}
-CapsLock & 5::SendMode("{`%}", "assignment")
+; CapsLock & 1::SendMode("{!}", "assignment")
+; CapsLock & 2::Send {@}
+; CapsLock & 3::Send {#}
+; CapsLock & 4::Send {$}
+; CapsLock & 5::SendMode("{`%}", "assignment")
+; CapsLock & 6::SendMode("{^}", "assignment") ;xor
+
+CapsLock & !::send {a}
+CapsLock & @::send {b}
+CapsLock & #::send {c}
+CapsLock & $::send {d}
+CapsLock & %::send {e}
+CapsLock & ^::send {f}
+; {!}
+; {@}
+; {#}123
+; {$}
+; {%}abc111
+; {^}
 
 CapsLock & y::Send {?} ;
-CapsLock & g::Send {_} ;
+CapsLock & g::Send {~} ;
 ; CapsLock & s::SendMode(Chr(34), Chr(39))
 CapsLock & s::Send {"}
 CapsLock & a::Send {'} ;
-CapsLock & x::Send {``} ;
 CapsLock & z::Send {\} ;
 
-CapsLock & `::Send {~}
+CapsLock & `::Send {``}
 
 ;placeholder
 ; CapsLock & 0::Send {_}  ;just for easy accessibility
 ; CapsLock & a::Send {a}  ;
 ; CapsLock & x::Send {x}  ;
-CapsLock & =::Send {BackSpace} ;
-CapsLock & -::Send {Delete}
-CapsLock & [::Send {=} ;
+CapsLock & x::Send {x} ;
+CapsLock & =::Send {=} ;
+CapsLock & -::Send {=}
+CapsLock & [::Send {Blind}{Enter} ;
 CapsLock & ]::Send {]} ;
 CapsLock & ,::Send {,} ;
 CapsLock & .::Send {.} ;
