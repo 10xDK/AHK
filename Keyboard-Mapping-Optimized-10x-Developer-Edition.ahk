@@ -217,8 +217,8 @@ return
 ; *s::send {LCtrl Down}{LShift Down}{LAlt Down}{g}{LAlt Up}{LShift Up}{LCtrl Up} ;(Select to)
 *g::send {Blind}{F18}
 *s::send {Blind}{F19}
-; *d::send {LAlt Down}{d}{LAlt Up} ;(Delete to)
-*d::send {Blind}{Delete}
+*d::send {LAlt Down}{d}{LAlt Up} ;(Delete to)
+; *d::send {Blind}{Delete}
 *p::send {blind}{PgDn} ;(Page) page up or down
 
 1::send {LCtrl Down}{k}{LCtrl Up}{LCtrl Down}{i}{LCtrl Up}   ;display hover
@@ -251,9 +251,11 @@ return
 *5::send {Blind}{`%}
 *6::send {Blind}{^}
 
-*7::Send {_}    ;123456_!@#abc
+; *6::Send {Blind}{Delete}
+*7::Send {Blind}{Delete} ;
 *8::Send {Blind}{BackSpace} ;(Backspace)
-*9::Send {Blind}{Delete}    ;
+; *8::Sendmode("{Blind}{BackSpace}", "{Delete}")
+*9::Send {Blind}{_}    ;
 *0::Send {Blind}{-} ;
 *-::Send {Blind}{=} ;
 *[::Send {Blind}{Enter} ;
@@ -340,13 +342,13 @@ CapsLock & o::Send {Blind}{6}
 CapsLock & 7::Send {Blind}{7}
 CapsLock & 8::Send {Blind}{8}
 CapsLock & 9::Send {Blind}{9}
-CapsLock & m::Send {Blind}{0}
+CapsLock & n::Send {Blind}{0}
 CapsLock & p::SendMode("{+}", "assignment") ;P for Plus
-CapsLock & 0::SendMode("{-}", "assignment") ;M for Minus
-CapsLock & h::SendMode("{*}", "assignment") ;T for Times
+CapsLock & 0::SendMode("{-}", "assignment") ;
+CapsLock & m::SendMode("{*}", "assignment") ;m for Multiply
 CapsLock & /::SendMode("{/}", "assignment")
-CapsLock & n::SendMode("{&}", "assignment") ;aNd
-CapsLock & b::SendMode("{|}", "assignment") ;OR
+CapsLock & h::SendMode("{&}", "assignment") ;aNd
+CapsLock & g::SendMode("{|}", "assignment") ;OR
 CapsLock & `;::SendMode("{:}", "assignment")
 CapsLock & e::SendMode("{<}", "assignment")
 CapsLock & r::SendMode("{>}", "assignment")
@@ -364,33 +366,26 @@ CapsLock & v::Send {}}
 ; CapsLock & 3::Send {#}
 ; CapsLock & 4::Send {$}
 ; CapsLock & 5::SendMode("{`%}", "assignment")
-; CapsLock & 6::SendMode("{^}", "assignment") ;xor
+; CapsLock & 6::SendMode("{^}", "assignment") ;xor B
 
-CapsLock & !::send {a}
-CapsLock & @::send {b}
-CapsLock & #::send {c}
-CapsLock & $::send {d}
-CapsLock & %::send {e}
-CapsLock & ^::send {f}
-; {!}
-; {@}
-; {#}123
-; {$}
-; {%}abc111
-; {^}
+CapsLock & `::SendMode("{A}","{``}")    ;
+CapsLock & !::SendMode("{B}", "{!}{=}")
+CapsLock & @::Send {C}
+CapsLock & #::Send {D}
+CapsLock & $::Send {E}
+CapsLock & %::SendMode("{F}", "{%}{=}") ;
+CapsLock & ^::SendMode("{^}", "assignment")
 
 CapsLock & y::Send {?} ;
-CapsLock & g::Send {~} ;
+CapsLock & b::Send {~} ;
 ; CapsLock & s::SendMode(Chr(34), Chr(39))
 CapsLock & s::Send {"}
 CapsLock & a::Send {'} ;
 CapsLock & z::Send {\} ;
 
-CapsLock & `::Send {``}
+; CapsLock & `::Send {``}
 
-;placeholder
-; CapsLock & 0::Send {_}  ;just for easy accessibility
-; CapsLock & a::Send {a}  ;
+;placeholder:
 ; CapsLock & x::Send {x}  ;
 CapsLock & x::Send {x} ;
 CapsLock & =::Send {=} ;
@@ -415,6 +410,7 @@ CapsLock & AppsKey::Send {AppsKey} ;
 ; <+[::return
 ; <+]::return
 ; *[::return
+; #l::return
 
 Shift_Down:
     ;    tooltip, % "[" A_ThisHotkey "]" ++test ;"`nA_PriorKey=" A_PriorKey    ; if you hold down shift, you'll see this loops after each timeout, so Shift is a repeat key just like any letter, it keeps getting spammed
@@ -444,14 +440,16 @@ Shift_Down:
         }
     }
 
-    ; allow Shift,Space,Space,Space(etc),Letter to work:
-    if (skip_spacebar)
-        while (key = " ")
-        Input key, V M L1 T%timeout%, %end_keys%
+    ; ; allow Shift,Space,Space,Space(etc),Letter to work:
+    ; if (skip_spacebar)
+    ;     while (key = " ")
+    ;     Input key, V M L1 T%timeout%, %end_keys%
 
     ; tooltip, key=[%key%]`nA_ThisHotkey=[%A_ThisHotkey%]`ntrigger_shift_key=[%trigger_shift_key%]`ninputErrorlevel=%inputErrorLevel%`nhotkeys back on
 
+    ;
     if !(GetKeyState(A_ThisHotkey))
+    ; if !(GetKeyState(LShift))
         Send, {%trigger_shift_key% Up}
     waiting_for_input := 0 ; the order of this line could possibly matter, this seems like the best order
     Hotkey, LShift, on
@@ -462,7 +460,7 @@ return
 
 Shift_Up:
     ; tooltip, [%A_ThisHotkey%]`nshift_key=%trigger_shift_key%
-
+    ;
     ; if we pressed and released Shift, then the down hotkey is waiting for the next char input
     ; so we want to turn off these hotkeys, so that we can detect another LShift as the Input EndKey
     if (waiting_for_input)
@@ -487,3 +485,4 @@ Shift_Up:
         Send, {%A_ThisHotkey%}
     }
 return
+;   a;dljsdkfJJsakjfLLllllL
