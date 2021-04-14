@@ -2,7 +2,8 @@
 
 import random
 
-strSym = "+= -= *= /= &= |= != + - * / & | { <> () [] {} : := -> => ! @ # $ %"
+strSym = "+= -= *= /= &= |= != + - * / & | <> () [] {} : := -> => ! @ # $ %"
+# strSym = "-= -- - _ __ ="
 
 def shuffle_string(str):
     list = str.split()
@@ -18,7 +19,7 @@ while True:
 
     if len(OutSym) < popLen:
         print('section complete, continue?(y/n):')
-        if (input() == 'n'): 
+        if (input() == 'n'):
             print('thank you')
             exit()
         else:
@@ -40,4 +41,3 @@ while True:
         else:
             print("error!\n")
             break
-
