@@ -33,7 +33,7 @@ Hotkey, RShift, Shift_Down, on
 Hotkey, LShift Up, Shift_Up , on
 Hotkey, RShift Up, Shift_Up , on
 
-Hotkey, *i, Off
+Hotkey, *h, Off
 Hotkey, *j, Off
 Hotkey, *k, Off
 Hotkey, *l, Off
@@ -63,6 +63,7 @@ Hotkey, *g, Off
 Hotkey, *t, Off
 ; Hotkey, *b, Off
 Hotkey, *p, Off
+Hotkey, *i, Off
 ; Hotkey, *!, Off
 ; Hotkey, *@, Off
 ; Hotkey, *#, Off
@@ -77,9 +78,10 @@ Hotkey, 5, Off
 Hotkey, 6, Off
 ; Hotkey, *9, Off
 Hotkey, *n, Off
+; Hotkey, 0, Off
 
 *AppsKey::
-    Hotkey, *i, on
+    Hotkey, *h, on
     Hotkey, *j, on
     Hotkey, *k, on
     Hotkey, *l, on
@@ -109,6 +111,7 @@ Hotkey, *n, Off
     Hotkey, *t, on
     ; Hotkey, *b, on
     Hotkey, *p, on
+    Hotkey, *i, on
     ; Hotkey, *!, on
     ; Hotkey, *@, on
     ; Hotkey, *#, on
@@ -123,10 +126,11 @@ Hotkey, 5, On
 Hotkey, 6, On
     ; Hotkey, *9, on
     Hotkey, *n, on
+    ; Hotkey, 0, on
 return
 
 *AppsKey up::
-    Hotkey, *i, off
+    Hotkey, *h, off
     Hotkey, *j, off
     Hotkey, *k, off
     Hotkey, *l, off
@@ -156,31 +160,33 @@ return
     Hotkey, *t, Off
     ; Hotkey, *b, Off
     Hotkey, *p, Off
+    Hotkey, *i, Off
     ; Hotkey, *!, Off
     ; Hotkey, *@, Off
     ; Hotkey, *#, Off
     ; Hotkey, *$, Off
     ; Hotkey, *`%, Off
     ; Hotkey, *^, Off
-Hotkey, 1, Off
-Hotkey, 2, Off
-Hotkey, 3, Off
-Hotkey, 4, Off
-Hotkey, 5, Off
-Hotkey, 6, Off
+    Hotkey, 1, Off
+    Hotkey, 2, Off
+    Hotkey, 3, Off
+    Hotkey, 4, Off
+    Hotkey, 5, Off
+    Hotkey, 6, Off
     ; Hotkey, *9, Off
     Hotkey, *n, Off
+    ; Hotkey, 0, Off
 return
 
 ;RALT combos:
-*i::send {blind}{up}
-*j::send {blind}{left}
-*k::send {blind}{down}
+*k::send {blind}{up}
+*j::send {blind}{down}
+*h::send {blind}{left}
 *l::send {blind}{right}
 *o::send {blind}{end}
 *u::send {blind}{home}
 ;
-; Custom commands are software-dependent and need manual configuration for the keybinds.
+; Custom commands are software-dependent and needing manual configuration for the keybinds.
 ; Below are the required extensions for VSCode:
 ;"Bracket Select" publisher:"Chunsen Wang"
 ;"Quick and Simple Text Selection" publisher:"David Bankier"
@@ -220,6 +226,7 @@ return
 *d::send {LAlt Down}{d}{LAlt Up} ;(Delete to)
 ; *d::send {Blind}{Delete}
 *p::send {blind}{PgDn} ;(Page) page up or down
+*i::send {blind}{PgUp} ;(Page) page up or down
 
 1::send {LCtrl Down}{k}{LCtrl Up}{LCtrl Down}{i}{LCtrl Up}   ;display hover
 2::send {LAlt Down}{F12}{LAlt Up} ;peek definition
@@ -237,14 +244,9 @@ return
 ; ^\::Send {LShift Down}{end}{LShift Up}{BackSpace} ;don't send {delete} to avoid triggering the alt+ctrl+delete system-wide command on windows
 ;; ^[::Send {LCtrl Down}{Delete}{LCtrl Up}
 
-; *[::Send {=} ;
 *`::Escape ;backtick "`" key to send ESCAPE
-; *0::Send {blind}{-} ;!@#$%^
 
-; #F11::Reload;
-
-
-*1::send {Blind}{!} ;b
+*1::send {Blind}{!} ;
 *2::send {Blind}{@}
 *3::send {Blind}{#}
 *4::send {Blind}{$}
@@ -265,6 +267,8 @@ return
 Sleep, 300 ; give it time to save the script
 Reload
 Return
+
+#F12::Suspend, Toggle
 
 ; */::Send {blind}{?} ;
 ; *'::Send {blind}{"} ;
@@ -347,8 +351,8 @@ CapsLock & p::SendMode("{+}", "assignment") ;P for Plus
 CapsLock & 0::SendMode("{-}", "assignment") ;
 CapsLock & m::SendMode("{*}", "assignment") ;m for Multiply
 CapsLock & /::SendMode("{/}", "assignment")
-CapsLock & h::SendMode("{&}", "assignment") ;aNd
-CapsLock & g::SendMode("{|}", "assignment") ;OR
+CapsLock & h::SendMode("{&}", "assignment") ;
+CapsLock & g::SendMode("{|}", "assignment") ;
 CapsLock & `;::SendMode("{:}", "assignment")
 CapsLock & e::SendMode("{<}", "assignment")
 CapsLock & r::SendMode("{>}", "assignment")
@@ -368,13 +372,19 @@ CapsLock & v::Send {}}
 ; CapsLock & 5::SendMode("{`%}", "assignment")
 ; CapsLock & 6::SendMode("{^}", "assignment") ;xor B
 
-CapsLock & `::SendMode("{A}","{``}")    ;
+CapsLock & `::SendMode("{A}","{``}")
 CapsLock & !::SendMode("{B}", "{!}{=}")
 CapsLock & @::Send {C}
 CapsLock & #::Send {D}
 CapsLock & $::Send {E}
 CapsLock & %::SendMode("{F}", "{%}{=}") ;
-CapsLock & ^::SendMode("{^}", "assignment")
+
+; CapsLock & `::SendMode("{``}","{~}")
+; CapsLock & `::Send {``}
+; CapsLock & !::SendMode("{!}", "assignment") ;
+; CapsLock & @::SendMode("{@}", "{}") ;
+; CapsLock & %::SendMode("{`%}", "{`%}{=}")
+; CapsLock & ^::SendMode("{^}", "assignment")   ;
 
 CapsLock & y::Send {?} ;
 CapsLock & b::Send {~} ;
@@ -386,7 +396,6 @@ CapsLock & z::Send {\} ;
 ; CapsLock & `::Send {``}
 
 ;placeholder:
-; CapsLock & x::Send {x}  ;
 CapsLock & x::Send {x} ;
 CapsLock & =::Send {=} ;
 CapsLock & -::Send {=}
@@ -485,4 +494,4 @@ Shift_Up:
         Send, {%A_ThisHotkey%}
     }
 return
-;   a;dljsdkfJJsakjfLLllllL
+;   a;dljsdkfJJsakjfLLllllL=
