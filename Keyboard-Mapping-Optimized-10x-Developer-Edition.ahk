@@ -62,7 +62,7 @@ Hotkey, *`;, Off
 Hotkey, *g, Off
 Hotkey, *t, Off
 ; Hotkey, *b, Off
-Hotkey, *p, Off
+; Hotkey, *p, Off
 Hotkey, *i, Off
 ; Hotkey, *!, Off
 ; Hotkey, *@, Off
@@ -110,7 +110,7 @@ Hotkey, *n, Off
     Hotkey, *g, on
     Hotkey, *t, on
     ; Hotkey, *b, on
-    Hotkey, *p, on
+    ; Hotkey, *p, on
     Hotkey, *i, on
     ; Hotkey, *!, on
     ; Hotkey, *@, on
@@ -159,7 +159,7 @@ return
     Hotkey, *g, Off
     Hotkey, *t, Off
     ; Hotkey, *b, Off
-    Hotkey, *p, Off
+    ; Hotkey, *p, Off
     Hotkey, *i, Off
     ; Hotkey, *!, Off
     ; Hotkey, *@, Off
@@ -184,7 +184,10 @@ return
 *h::send {blind}{left}
 *l::send {blind}{right}
 *o::send {blind}{end}
-*u::send {blind}{home}
+*y::send {blind}{home}
+*i::send {blind}{PgUp} ;(Page) page up or down
+*u::send {blind}{PgDn} ;(Page) page up or down
+
 ;
 ; Custom commands are software-dependent and needing manual configuration for the keybinds.
 ; Below are the required extensions for VSCode:
@@ -204,10 +207,10 @@ return
 *x::send {LCtrl Down}{x}{LCtrl Up} ;(X) cut word/selection !need above extension
 *v::send {LCtrl Down}{v}{LCtrl Up} ;(V) Paste
 ;*r::send {LCtrl Down}{d}{v}{LCtrl Up}    ;(Replace) replace Word with the clipboard
-*z::send {LCtrl Down}{z}{LCtrl Up} ;(Z) undo
-*y::send {LCtrl Down}{y}{LCtrl Up} ;(Y) redo
+*z::send {Blind}{LCtrl Down}{z}{LCtrl Up} ;(Z) undo
+; *y::send {LCtrl Down}{y}{LCtrl Up} ;(Y) redo
 *t::send {home}{LShift Down}{end}{LShift Up} ;(Text) select all Text in line (excluding the indent)
-*a::send {Blind}{LCtrl Down}{g}{LCtrl Up} ;(All) select all thing in a line including the indent
+*a::send {Blind}{LCtrl Down}{g}{LCtrl Up} ;(All) select all things in a line including the indent
 
 ; *e::send {LCtrl Down}{k}{LCtrl Up}{LShift Down}{,}{LShift Up} ;select inside angled brackets ! "Quick and Simple Text Selection" (extension.selectAngleBrackets)
 ; *h::send {LCtrl Down}{k}{LCtrl Up}{LShift Down}{.}{LShift Up} ;select inside HTML tag ! "Quick and Simple Text Selection" (extension.selectInTag)
@@ -225,8 +228,6 @@ return
 *s::send {Blind}{F19}
 *d::send {LAlt Down}{d}{LAlt Up} ;(Delete to)
 ; *d::send {Blind}{Delete}
-*p::send {blind}{PgDn} ;(Page) page up or down
-*i::send {blind}{PgUp} ;(Page) page up or down
 
 1::send {LCtrl Down}{k}{LCtrl Up}{LCtrl Down}{i}{LCtrl Up}   ;display hover
 2::send {LAlt Down}{F12}{LAlt Up} ;peek definition
@@ -372,19 +373,27 @@ CapsLock & v::Send {}}
 ; CapsLock & 5::SendMode("{`%}", "assignment")
 ; CapsLock & 6::SendMode("{^}", "assignment") ;xor B
 
-CapsLock & `::SendMode("{A}","{``}")
-CapsLock & !::SendMode("{B}", "{!}{=}")
-CapsLock & @::Send {C}
-CapsLock & #::Send {D}
-CapsLock & $::Send {E}
-CapsLock & %::SendMode("{F}", "{%}{=}") ;
+; CapsLock & `::SendMode("{A}","{``}")
+; CapsLock & !::SendMode("{B}", "{!}{=}")
+; CapsLock & @::Send {C}
+; CapsLock & #::Send {D}
+; CapsLock & $::Send {E}
+; CapsLock & %::SendMode("{F}", "{%}{=}") ;
+;
+; CapsLock & `::Send {0}
+; CapsLock & !::Send {1}
+; CapsLock & @::Send {2}
+; CapsLock & #::Send {3}
+; CapsLock & $::Send {4}
+; CapsLock & %::Send {5}
+; CapsLock & ^::Send {6}
 
 ; CapsLock & `::SendMode("{``}","{~}")
-; CapsLock & `::Send {``}
-; CapsLock & !::SendMode("{!}", "assignment") ;
-; CapsLock & @::SendMode("{@}", "{}") ;
-; CapsLock & %::SendMode("{`%}", "{`%}{=}")
-; CapsLock & ^::SendMode("{^}", "assignment")   ;
+CapsLock & `::Send {``}
+CapsLock & !::SendMode("{!}", "assignment") ;
+CapsLock & @::SendMode("{@}", "{}") ;
+CapsLock & %::SendMode("{`%}", "{`%}{=}")
+CapsLock & ^::SendMode("{^}", "assignment")   ;
 
 CapsLock & y::Send {?} ;
 CapsLock & b::Send {~} ;
