@@ -52,7 +52,7 @@ Hotkey, *q, Off
 Hotkey, *c, Off
 Hotkey, *x, Off
 Hotkey, *v, Off
-; Hotkey, *r, Off
+Hotkey, *r, Off
 Hotkey, *z, Off
 Hotkey, *y, Off
 Hotkey, *t, Off
@@ -100,7 +100,7 @@ Hotkey, *n, Off
     Hotkey, *c, on
     Hotkey, *x, on
     Hotkey, *v, on
-    ; Hotkey, *r, on
+    Hotkey, *r, on
     Hotkey, *z, on
     Hotkey, *y, on
     Hotkey, *t, on
@@ -149,7 +149,7 @@ return
     Hotkey, *c, Off
     Hotkey, *x, Off
     Hotkey, *v, Off
-    ; Hotkey, *r, Off
+    Hotkey, *r, Off
     Hotkey, *z, Off
     Hotkey, *y, Off
     Hotkey, *t, Off
@@ -211,6 +211,7 @@ return
 ; *y::send {LCtrl Down}{y}{LCtrl Up} ;(Y) redo
 *t::send {home}{LShift Down}{end}{LShift Up} ;(Text) select all Text in line (excluding the indent)
 *a::send {Blind}{LCtrl Down}{g}{LCtrl Up} ;(All) select all things in a line including the indent
+*r::send {LCtrl Down}{LShift Down}{r}{LShift Up}{LCtrl Up}
 
 ; *e::send {LCtrl Down}{k}{LCtrl Up}{LShift Down}{,}{LShift Up} ;select inside angled brackets ! "Quick and Simple Text Selection" (extension.selectAngleBrackets)
 ; *h::send {LCtrl Down}{k}{LCtrl Up}{LShift Down}{.}{LShift Up} ;select inside HTML tag ! "Quick and Simple Text Selection" (extension.selectInTag)
@@ -392,6 +393,7 @@ CapsLock & v::Send {}}
 CapsLock & `::Send {``}
 CapsLock & !::SendMode("{!}", "assignment") ;
 CapsLock & @::SendMode("{@}", "{}") ;
+CapsLock & $::SendMode("{$}", "{$}{{}") ;
 CapsLock & %::SendMode("{`%}", "{`%}{=}")
 CapsLock & ^::SendMode("{^}", "assignment")   ;
 
