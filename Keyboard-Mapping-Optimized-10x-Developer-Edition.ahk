@@ -1,12 +1,23 @@
 #NoEnv
 #SingleInstance, Force
+#KeyHistory 0
+Process, Priority, , A
+ListLines, Off
 
-; ListLines, Off
-SetBatchLines, -1
+#MaxHotkeysPerInterval 99000000
+#HotkeyInterval 99000000
+
+SetKeyDelay, -1, -1
+SetMouseDelay, -1
+SetDefaultMouseSpeed, 0
+SetWinDelay, -1
+SetControlDelay, -1
+
+SetBatchLines, 10
+
 SendMode Input
 SetWorkingDir, %A_ScriptDir%
 
-#KeyHistory 0
 
 ;How long the Shift should stay active this value is in seconds. use 0.5 for half secondif you want a capital A, then press and release Shift, then press 'a' within two seconds after the timeout has elapsed, the shift is no longer in effect
 timeout := 0.3
@@ -418,7 +429,7 @@ CapsLock & \::Send {Delete} ;
 CapsLock & Backspace::Send {Backspace} ;
 CapsLock & Enter::Send {Enter} ;
 CapsLock & Space::Send {Space} ;
-CapsLock & AppsKey::Send {AppsKey} ;
+CapsLock & AppsKey::Send {} ;
 ; CapsLock & @::SendMode("ummmmm@gmail.com", "string")
 
 ; ;disable keys:
