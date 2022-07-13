@@ -14,6 +14,7 @@ SetWinDelay, -1
 SetControlDelay, -1
 
 SetBatchLines, 10
+
 SendMode Input
 SetWorkingDir, %A_ScriptDir%
 
@@ -428,7 +429,7 @@ CapsLock & \::Send {Delete} ;
 CapsLock & Backspace::Send {Backspace} ;
 CapsLock & Enter::Send {Enter} ;
 CapsLock & Space::Send {Space} ;
-CapsLock & AppsKey::Send {AppsKey} ;
+CapsLock & AppsKey::Send {} ;
 ; CapsLock & @::SendMode("ummmmm@gmail.com", "string")
 
 ; ;disable keys:
