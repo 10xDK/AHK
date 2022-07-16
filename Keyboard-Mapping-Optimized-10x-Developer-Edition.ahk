@@ -322,16 +322,20 @@ Return
 ;     }
 ; Return
 
-*Capslock Up:: ; Fire the hotkey even if extra modifiers are being held down.
-    if (double_shift_for_caps == 1)
-    {
-        SetCapsLockState, off
-    }
-    else
-    {
-        if (CLState == 0)
-            SetCapsLockState, off
-    }
+; *Capslock Up:: ; Fire the hotkey even if extra modifiers are being held down.
+;     if (double_shift_for_caps == 1)
+;     {
+;         SetCapsLockState, off
+;     }
+;     else
+;     {
+;         if (CLState == 0)
+;             SetCapsLockState, off
+;     }
+; return
+
+Capslock Up::
+SetCapsLockState, AlwaysOff
 return
 
 SendMode(key, mode) {
