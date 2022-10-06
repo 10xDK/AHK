@@ -2,8 +2,8 @@
 
 An **[AutoHotKey](https://www.autohotkey.com/docs/misc/Remap.htm)** script that creates a keyboard layout optimized for programming.
 
-The script enables the **CapsLock** and **APP** key functioning like the modifier keys(*e.g. ctrl, shift*). It remaps arrow keys to **hjkl** and symbol keys to easy accecible locations.  
-Typing symbols and brackets on traditional keyboard put a lot of stress on the right **Pinky** and often requires **distant** hand movements.
+The script enables the **CapsLock** and **APP** key functioning as the modifier keys(*e.g. ctrl, shift*). It remaps arrow keys to **hjkl** and symbol keys to easy accecible locations.  
+Typing symbols or brackets on traditional keyboard puts a lot of stress on the right **Pinky** and also requires **distant** hand movements.
 
 ## USAGE 
 ### CapsLock Layer: Operators and Numbers
