@@ -10,11 +10,6 @@ Typing symbols and brackets on traditional keyboard put a lot of stress on the r
 **For illustrative purpose only**
 
 ![usage](pic/layer1.png)
-
-CapsLock + keys: send **operators** and **numbers** (pink and blue ones)  
-CapsLock + LALT + keys: send **assignment operators** (purple ones) 
-
-**Double-tap CapsLock** to turn CAPITALIZATION ON/OFF(the key's original functionality). (or if you prefer Double-tap to turn it on and single tab to turn it off then just commenting off/on the corresponding code section)
 ___
 
 ### RALT Layer: Navigation and Custom Commands
